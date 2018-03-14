@@ -1,9 +1,6 @@
-NAME = fractol
+NAME = checker
 
-SRC_FILES =	fractol.c\
-		ft_events.c\
-		set_menu.c\
-		mandelbrot.c\
+SRC_FILES =	main.c\
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
@@ -20,17 +17,14 @@ CC = gcc
 FLAGS = -Wall -Wextra
 
 LIBFT = -L./libft -lft
-#FTPRINTF = -L ./ft_printf
-MLX = -L./minilibx -lmlx -framework OpenGL -framework Appkit
 
 all: $(NAME)
 
 
 $(NAME): $(OBJ)
 	@ make -C libft/
-	@ make -C minilibx
-	@ $(CC) $(FLAGS)  $(LIBFT) $(MLX) $^ -o $@
-	@ echo "\033[32mCompilation done : FRACTOL is ready to be used\033[0m"
+	@ $(CC) $(FLAGS)  $(LIBFT)  $^ -o $@
+	@ echo "\033[32mCompilation done : Checker is ready to be used\033[0m"
 
 $(OBJ_PATH)%.o:$(SRC_PATH)%.c
 	@ mkdir -p $(OBJ_PATH)
@@ -38,14 +32,12 @@ $(OBJ_PATH)%.o:$(SRC_PATH)%.c
 
 clean:
 	@ make -C libft clean
-	@ make -C minilibx clean
 	@ rm -rf $(OBJ)
 	@ rm -rf $(OBJ_PATH)
 	@ echo "\033[32mCleaning obj\033[0m"
 
 fclean: clean
 	@ make -C libft fclean
-	@ make -C minilibx fclean
 	@ rm -f $(NAME)
 	@ echo "\033[32mCleaning FRACTOL\033[0m"
 
