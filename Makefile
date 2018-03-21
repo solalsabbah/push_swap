@@ -1,6 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2018/03/21 15:32:49 by ssabbah           #+#    #+#              #
+#    Updated: 2018/03/21 15:42:32 by ssabbah          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = checker
 
-SRC_FILES =	main.c\
+SRC_FILES =	main.c
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
@@ -20,10 +32,9 @@ LIBFT = -L./libft -lft
 
 all: $(NAME)
 
-
 $(NAME): $(OBJ)
 	@ make -C libft/
-	@ $(CC) $(FLAGS)  $(LIBFT)  $^ -o $@
+	@ $(CC) -c $(FLAGS) $(LIBFT) $^ -o $@
 	@ echo "\033[32mCompilation done : Checker is ready to be used\033[0m"
 
 $(OBJ_PATH)%.o:$(SRC_PATH)%.c
