@@ -12,7 +12,7 @@
 
 #include "checker.h"
 
-int	checker(int ac, char **av)
+int	main(int ac, char **av)
 {
 	int i;
 	int *tab;
@@ -24,6 +24,9 @@ int	checker(int ac, char **av)
 		if (ft_isnumber(av[i]) == 0)
 			return (0);
 		tab[i - 1] = ft_atoi(av[i]);
+		i++;
 	}
 	return (0);
 }
+
+//Entree standard : read 

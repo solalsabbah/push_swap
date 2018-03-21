@@ -34,12 +34,12 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ make -C libft/
-	@ $(CC) -c $(FLAGS) $(LIBFT) $^ -o $@
+	@ $(CC) $(FLAGS) $(LIBFT) $^ -o $@
 	@ echo "\033[32mCompilation done : Checker is ready to be used\033[0m"
 
 $(OBJ_PATH)%.o:$(SRC_PATH)%.c
 	@ mkdir -p $(OBJ_PATH)
-	@ $(CC) $(FLAGS) $(INCLUDES) -o $@ -c $<
+	@ $(CC) -c $(FLAGS) $(INCLUDES) -o $@ -c $<
 
 clean:
 	@ make -C libft clean
