@@ -18,6 +18,18 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 
+#define sa 1
+#define sb 2
+#define ss 3
+#define pa 4
+#define pb 5
+#define ra 6
+#define rb 7
+#define rr 8
+#define rra 9 
+#define rrb 10
+#define rrr 11
+
 int		checker(int *a, int elem);
 
 #endif
