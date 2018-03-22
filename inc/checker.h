@@ -13,9 +13,11 @@
 #ifndef CHECKER_H
 # define CHECKER_H
 
+
 # include <unistd.h>
+# include <stdio.h>
 # include "../libft/libft.h"
 
-int		checker(int ac, char **av);
+int		checker(int *a, int elem);
 
 #endif
