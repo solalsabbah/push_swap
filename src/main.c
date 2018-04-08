@@ -55,7 +55,7 @@ int	checker(int *a, int elem, t_param *p)
 {
 	int		fd;
 	int		*b;
-	char	*line;
+	char		*line;
 		
 	free(a);
 	fd = 0;
@@ -72,10 +72,11 @@ int	checker(int *a, int elem, t_param *p)
 	return (0);
 }
 
-void	init(t_param *p)
+void	init(t_param *p, int ac)
 {
 	p->i = 0;
-	p->tab = malloc(sizeof(int) * 1000);
+	p->nb = ac;
+	p->tab = malloc(sizeof(int) * 2048);
 }
 
 int	main(int ac, char **av)
@@ -86,7 +87,7 @@ int	main(int ac, char **av)
 
 	i = 1;
 	a = malloc(sizeof(int) * ac);
-	init(&p);
+	init(&p, ac);
 	while (i < ac)
 	{
 		if (ft_isnumber(av[i]) == 0)

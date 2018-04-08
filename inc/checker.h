@@ -34,6 +34,7 @@ typedef struct	s_param
 {
 	
 	int			*tab;
+	int			nb;
 	int			i; 
 }				t_param;
 
