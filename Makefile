@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 15:32:49 by ssabbah           #+#    #+#              #
-#    Updated: 2018/03/22 14:36:23 by ssabbah          ###   ########.fr        #
+#    Updated: 2018/04/09 13:25:31 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = checker
 
 SRC_FILES =	main.c\
 			solve.c\
+			list_op.c\
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 

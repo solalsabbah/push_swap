@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:53:30 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/03/22 14:45:40 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/04/09 13:43:58 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,21 @@
 
 
 # include <unistd.h>
+# include <stdlib.h>
 # include <stdio.h>
 # include "../libft/libft.h"
 
-# define sa 1
-# define sb 2
-# define ss 3
-# define pa 4
-# define pb 5
-# define ra 6
-# define rb 7
-# define rr 8
-# define rra 9 
-# define rrb 10
-# define rrr 11
+# define SA 1
+# define SB 2
+# define SS 3
+# define PA 4
+# define PB 5
+# define RA 6
+# define RB 7
+# define RR 8
+# define RRA 9 
+# define RRB 10
+# define RRR 11
 
 typedef struct	s_param
 {
@@ -38,7 +39,20 @@ typedef struct	s_param
 	int			i; 
 }				t_param;
 
-int		checker(int *a, int elem, t_param *p);
-int		apply_op(t_param *p, int *a, int *b);
+typedef struct s_stack t_stack;
+
+struct s_stack
+{
+	int			val;
+	t_stack		*next;
+};
+
+
+int		checker(t_param *p, t_stack *s1);
+int		apply_op(t_param *p, t_stack *s1);
+
+void	print_stack(t_stack *s1);
+void	print_elem(t_stack *s1);
+t_stack	*add_link(t_stack *s1, int val);
 
 #endif

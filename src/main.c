@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 19:38:55 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/03/22 14:45:27 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/04/09 15:44:03 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,39 +27,36 @@ int	validate_content(char *line, t_param *p)
 
 	n = 0;
 	if (ft_strcmp(line, "sa") == 0)
-		n = add_op(sa, p);	
+		n = add_op(SA, p);	
 	if (ft_strcmp(line, "sb") == 0)
-		n = add_op(sb, p);	
+		n = add_op(SB, p);	
 	if (ft_strcmp(line, "ss") == 0)
-		n = add_op(ss, p);	
+		n = add_op(SS, p);	
 	if (ft_strcmp(line, "pa") == 0)
-		n = add_op(pa, p);	
+		n = add_op(PA, p);	
 	if (ft_strcmp(line, "pb") == 0)
-		n = add_op(pb, p);	
+		n = add_op(PB, p);	
 	if (ft_strcmp(line, "ra") == 0)
-		n = add_op(ra, p);	
+		n = add_op(RA, p);	
 	if (ft_strcmp(line, "rb") == 0)
-		n = add_op(rb, p);	
+		n = add_op(RB, p);	
 	if (ft_strcmp(line, "rr") == 0)
-		n = add_op(rr, p);	
+		n = add_op(RR, p);	
 	if (ft_strcmp(line, "rra") == 0)
-		n = add_op(rra, p);	
+		n = add_op(RRA, p);	
 	if (ft_strcmp(line, "rrb") == 0)
-		n = add_op(rrb, p);	
+		n = add_op(RRB, p);	
 	if (ft_strcmp(line, "rrr") == 0)
-		n = add_op(rrr, p);
+		n = add_op(RRR, p);
 	return (n);
 }
 
-int	checker(int *a, int elem, t_param *p)
+int	checker(t_param *p, t_stack *s1)
 {
 	int		fd;
-	int		*b;
-	char		*line;
+	char	*line;
 		
-	free(a);
 	fd = 0;
-	b = malloc(sizeof(int) * elem);
 	while (get_next_line(fd, &line) != -1)
 	{
 		if (ft_strcmp(line, "") == 0)
@@ -68,38 +65,41 @@ int	checker(int *a, int elem, t_param *p)
 			printf("Wrong operand\n");
 		free(line);
 	}
-	apply_op(p, a , b);
+	apply_op(p, s1);
 	return (0);
 }
 
-void	init(t_param *p, int ac)
+void	init(t_param *p)
 {
 	p->i = 0;
-	p->nb = ac;
 	p->tab = malloc(sizeof(int) * 2048);
 }
 
 int	main(int ac, char **av)
 {
 	int		i;
-	int		*a;
+	t_stack	*s1;
+	t_stack *tmp;
 	t_param p;
 
 	i = 1;
-	a = malloc(sizeof(int) * ac);
-	init(&p, ac);
-	while (i < ac)
+	s1 = NULL;
+	init(&p);
+	while (--ac > 0)
 	{
-		if (ft_isnumber(av[i]) == 0)
+		if (ft_isnumber(av[ac]) == 0)
 		{
 			printf("Usage : please only put number\n");
 			return (0);
 		}
-		a[i - 1] = ft_atoi(av[i]);
-		i++;
+		s1 = add_link(s1, ft_atoi(av[ac]));
 	}
-	checker(a, ac - 1, &p);
+	print_stack(s1);
+	print_elem(s1->next->next);
+	s1->next = 
+//	checker(&p, &s1);
 	printf("finished\n");
+
 }
 
 //Entree standard : read 
