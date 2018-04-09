@@ -20,9 +20,9 @@ int position(int a)
 
 int is_sort(t_stack *s1, t_stack *s2)
 {
-	while (s1->next) 
+	while (s1) 
 	{
-		if (s1->val > s1->next->val)
+		if (s1->next && s1->val > s1->next->val)
 			return (0);
 		s1 = s1->next;
 	}
@@ -41,7 +41,6 @@ int apply_op(t_param *p, t_stack *s1)
 	n = 0;
 	s2 = malloc(sizeof(t_stack));
 	s2 = NULL;
-	printf("\n");
 	while (n < p->i)
 	{
 		if ((p->tab[n] == SA || p->tab[n] == SS) && s1 && s1->next)

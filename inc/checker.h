@@ -48,8 +48,11 @@ struct s_stack
 };
 
 
-int			checker(t_param *p, t_stack *s1);
-int			apply_op(t_param *p, t_stack *s1);
+int		checker(t_param *p, t_stack *s1);
+int		apply_op(t_param *p, t_stack *s1);
+int		checker(t_param *p, t_stack *s1);
+int		validate_content(char *line, t_param *p);
+int		add_op(int op, t_param *p);
 
 t_stack		*add_link(t_stack *s1, int val);
 t_stack		*inv_rotate(t_stack *s1);
@@ -57,5 +60,6 @@ t_stack		*rotate_list(t_stack *s1);
 
 void		print_elem(t_stack *s1);
 void		print_stack(t_stack *s1, t_stack *s2);
+void		init(t_param *p);
 
 #endif

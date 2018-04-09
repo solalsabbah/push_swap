@@ -87,19 +87,19 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	ar rc $(NAME) $(OBJECTS)	
+	@ ar rc $(NAME) $(OBJECTS)	
 
 %.o:%.c
-	gcc $(FLAGS) -c $(SRC) -include libft.h
+	@ gcc $(FLAGS) -c $(SRC) -include libft.h
 
 
 clean:
-	/bin/rm -f $(OBJECTS)
+	@ /bin/rm -f $(OBJECTS)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@ /bin/rm -f $(NAME)
 
 norm : 
-	@norminette $(SRC)
+	@ norminette $(SRC)
 
 re: fclean all

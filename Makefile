@@ -10,32 +10,37 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = checker
+CHECKER = checker
+PS = push_swap
 
-SRC_FILES =	main.c\
+SRC_FILES =		checker.c\
 			solve.c\
 			list_op.c\
 			print_stacks.c\
+			init.c\
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
-SRC_PATH = src/
 OBJ_PATH = obj/
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_FILES))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_FILES))
+
 #LIB = $(addprefix -I,$(LIB_PATH))
 INC_DIR = inc
 INCLUDES = -I $(INC_DIR)
 
 CC = gcc
+
 FLAGS = -Wall -Wextra
 
 LIBFT = -L./libft -lft
 
-all: $(NAME)
+VPATH=src/checker/:src/push_swap/:src/shared/ 
 
-$(NAME): $(OBJ)
+all: $(CHECKER)
+
+$(CHECKER): $(OBJ)
 	@ make -C libft/
 	@ $(CC) $(FLAGS) $(LIBFT) $^ -o $@
 	@ echo "\033[32mCompilation done : Checker is ready to be used\033[0m"
@@ -52,8 +57,8 @@ clean:
 
 fclean: clean
 	@ make -C libft fclean
-	@ rm -f $(NAME)
-	@ echo "\033[32mCleaning FRACTOL\033[0m"
+	@ rm -f $(CHECKER)
+	@ echo "\033[32mCleaning exec\033[0m"
 
 norm :
 	@make -C libft norm
