@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 19:38:55 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/04/09 15:44:03 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/04/09 21:26:22 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 int	add_op(int op, t_param *p)
 {
-	printf("[%d]\n", op);
 	p->tab[p->i] = op;
 	p->i++;
 	return (1);
@@ -78,8 +77,8 @@ void	init(t_param *p)
 int	main(int ac, char **av)
 {
 	int		i;
+
 	t_stack	*s1;
-	t_stack *tmp;
 	t_param p;
 
 	i = 1;
@@ -94,12 +93,5 @@ int	main(int ac, char **av)
 		}
 		s1 = add_link(s1, ft_atoi(av[ac]));
 	}
-	print_stack(s1);
-	print_elem(s1->next->next);
-	s1->next = 
-//	checker(&p, &s1);
-	printf("finished\n");
-
+	checker(&p, s1);
 }
-
-//Entree standard : read 
