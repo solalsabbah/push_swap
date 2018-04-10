@@ -4,14 +4,12 @@ int	main(int ac, char **av)
 {
 	int		i;
 	t_stack		*s1;
-	t_param		p;
-
 
 	if (ac == 1)
 		return (0);
 	i = 1;
 	s1 = NULL;
-	init(&p);
+	return (0);
 	while (--ac > 0)
 	{
 		if (ft_isnumber(av[ac]) == 0)
@@ -21,5 +19,5 @@ int	main(int ac, char **av)
 		}
 		s1 = add_link(s1, ft_atoi(av[ac]));
 	}
-	checker(&p, s1);
+	print_stack(s1, NULL);
 }
