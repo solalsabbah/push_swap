@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 14:30:55 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/04/09 21:28:59 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/04/11 16:24:52 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,12 @@ int apply_op(t_param *p, t_stack *s1)
 			s2 = s2->next;
 			free(adr);
 		}	
-		if (p->tab[n] == RA && s1)
+		if ((p->tab[n] == RA || p->tab[n] == RR) && s1)
 		{
 			s1 = rotate_list(s1);
 		}
-		if (p->tab[n] == RB && s2) 
+		if ((p->tab[n] == RB || p->tab[n] == RR) && s2) 
 		{
-			s2 = rotate_list(s2);
-		}
-		if (p->tab[n] == RR) 
-		{
-			s1 = rotate_list(s1);
 			s2 = rotate_list(s2);
 		}
 		if (p->tab[n] == RRA && s1) 
@@ -90,7 +85,7 @@ int apply_op(t_param *p, t_stack *s1)
 		{
 			s2 = inv_rotate(s2);
 		}
-		if (p->tab[n] == RRR && s1) 
+		if (p->tab[n] == RRR && s1 && s2) 
 		{
 			s1 = inv_rotate(s1);
 			s2 = inv_rotate(s2);

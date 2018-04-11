@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/11 17:25:57 by ssabbah           #+#    #+#              #
-#    Updated: 2018/03/21 15:04:47 by ssabbah          ###   ########.fr        #
+#    Updated: 2018/04/11 15:24:55 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@ ar rc $(NAME) $(OBJECTS)	
+	 ar rc $(NAME) $(OBJECTS)	
 
 %.o:%.c
 	@ gcc $(FLAGS) -c $(SRC) -include libft.h
