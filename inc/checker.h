@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:53:30 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/04/11 15:21:27 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/04/11 18:33:30 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,20 @@ struct s_stack
 };
 
 
-int		checker(t_param *p, t_stack *s1);
-int		apply_op(t_param *p, t_stack *s1);
-int		checker(t_param *p, t_stack *s1);
-int		validate_content(char *line, t_param *p);
-int		add_op(int op, t_param *p);
+int			checker(t_param *p, t_stack *s1);
+int			apply_op(t_param *p, t_stack *s1);
+int			checker(t_param *p, t_stack *s1);
+int			validate_content(char *line, t_param *p);
+int			add_op(int op, t_param *p);
+int			median_stack(t_stack *s1);
+
+int			*bubble_sort(int n, int *tab);
 
 t_stack		*add_link(t_stack *s1, int val);
 t_stack		*inv_rotate(t_stack *s1);
 t_stack		*rotate_list(t_stack *s1);
 
+void		swap(t_stack *s1);
 void		print_elem(t_stack *s1);
 void		print_stack(t_stack *s1, t_stack *s2);
 void		init(t_param *p);

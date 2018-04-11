@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 15:32:49 by ssabbah           #+#    #+#              #
-#    Updated: 2018/04/11 16:22:22 by ssabbah          ###   ########.fr        #
+#    Updated: 2018/04/11 18:31:57 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,13 @@ SHARED_SRC =	solve.c\
 				list_op.c\
 				print_stacks.c\
 				init.c\
+				stack_op.c\
 
 CHECKER_SRC = checker.c\
 
-PUSHSWAP_SRC = push_swap.c\
+PUSHSWAP_SRC = 	push_swap.c\
+				median_stack.c\
+				bubble_sort.c\
 
 SHARED_OBJ = $(SHARED_SRC:.c=.o)
 CHECKER_OBJ = $(CHECKER_SRC:.c=.o)
