@@ -20,8 +20,9 @@ int	main(int ac, char **av)
 	t_stack 	*s2;
 	
 	i = 1;
-	s1 = NULL;
 	s2 = malloc(sizeof(t_stack));
+	s1 = NULL;
+	s2 = NULL;
 	if (ac == 1)
 		return (0);
 	while (--ac > 0)
@@ -34,8 +35,7 @@ int	main(int ac, char **av)
 		s1 = add_link(s1, ft_atoi(av[ac]));
 	}
 	med = median_stack(s1);
-//	split_stack(med, s1, s2);
+	split_stack(med, s1, s2);
 	printf("med %d\n", med);
-	print_stack(s1, NULL);
 	return (0);
 }

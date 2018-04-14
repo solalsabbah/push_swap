@@ -32,11 +32,12 @@
 # define RRR 11
 
 typedef struct	s_param
-{
-	
+{	
+	int			nb; // count of element in stack 
+	int			i;  // used for table of operands
 	int			*tab;
-	int			nb;
-	int			i; 
+	void			*a1;
+	void			*b1;
 }				t_param;
 
 typedef struct s_stack t_stack;
@@ -49,7 +50,7 @@ struct s_stack
 
 
 int			checker(t_param *p, t_stack *s1);
-int			apply_op(t_param *p, t_stack *s1);
+int			apply_op(t_param *p, t_stack *s1, t_stack *s2);
 int			checker(t_param *p, t_stack *s1);
 int			validate_content(char *line, t_param *p);
 int			add_op(int op, t_param *p);
@@ -61,6 +62,8 @@ t_stack		*add_link(t_stack *s1, int val);
 t_stack		*inv_rotate(t_stack *s1);
 t_stack		*rotate_list(t_stack *s1);
 
+void		split_stack(int med, t_stack *s1, t_stack *s2);
+void		push(t_stack *s1, t_stack *s2, t_param *p);
 void		swap(t_stack *s1);
 void		print_elem(t_stack *s1);
 void		print_stack(t_stack *s1, t_stack *s2);

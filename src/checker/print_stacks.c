@@ -16,7 +16,6 @@ void 	print_stack(t_stack *s1, t_stack *s2)
 {
 	while (s1 || s2)
 	{
-
 		if (!s1)
 			printf("       ||");
 		if (s1)

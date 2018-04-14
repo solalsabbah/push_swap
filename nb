@@ -1,0 +1,31 @@
+libft/ft_lstdel.c:		tmplst = tmp->next;
+libft/ft_lstdel.c:		del(tmp->content, tmp->content_size);
+Binary file push_swap.fr.pdf matches
+src/checker/solve.c:	while (n < p->i)
+src/checker/solve.c:		if ((p->tab[n] == SA || p->tab[n] == SS) && s1 && s1->next)
+src/checker/solve.c:		if ((p->tab[n] == SB || p->tab[n] == SS) && s2 && s2->next)
+src/checker/solve.c:		if (p->tab[n] == PB && s1)
+src/checker/solve.c:			s1 = p->a1;
+src/checker/solve.c:			s2 = p->b1;
+src/checker/solve.c:			p->a1 = NULL;
+src/checker/solve.c:			p->b1 = NULL;
+src/checker/solve.c:		if (p->tab[n] == PA && s2)
+src/checker/solve.c:			s2 = p->a1;
+src/checker/solve.c:			s1 = p->b1;
+src/checker/solve.c:			p->a1 = NULL;
+src/checker/solve.c:			p->b1 = NULL;
+src/checker/solve.c:		if ((p->tab[n] == RA || p->tab[n] == RR) && s1)
+src/checker/solve.c:		if ((p->tab[n] == RB || p->tab[n] == RR) && s2) 
+src/checker/solve.c:		if ((p->tab[n] == RRA || p->tab[n] == RRR) && s1) 
+src/checker/solve.c:		if ((p->tab[n] == RRB || p->tab[n] == RRR) && s2) 
+src/checker/list_op.c:		tmp->val = val;
+src/checker/list_op.c:		tmp->next = s1;
+src/shared/init.c:	p->tab[p->i] = op;
+src/shared/init.c:	p->i++;
+src/shared/init.c:	p->i = 0;	
+src/shared/init.c:	p->tab = malloc(sizeof(int) * 2048); // need to make a greated size or i should use a stack ? 
+src/shared/init.c:	p->a1 = NULL;
+src/shared/init.c:	p->b1 = NULL;
+src/shared/stack_op.c:	p->b1 = add_link(s2, s1->val);
+src/shared/stack_op.c:	p->a1 = s1->next;
+src/shared/stack_op.c:			tmp->next = NULL;

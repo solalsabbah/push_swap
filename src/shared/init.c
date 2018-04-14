@@ -40,9 +40,12 @@ int	validate_content(char *line, t_param *p)
 int	checker(t_param *p, t_stack *s1)
 {
 	int		fd;
-	char	*line;
+	char		*line;
+	t_stack		*s2;
 
 	fd = 0;
+	s2 = malloc(sizeof(t_stack));
+	s2 = NULL; // it segfault without it ! 
 	while (get_next_line(fd, &line) != -1)
 	{
 		if (ft_strcmp(line, "") == 0)
@@ -51,12 +54,15 @@ int	checker(t_param *p, t_stack *s1)
 			printf("Wrong operand\n");
 		free(line);
 	}
-	apply_op(p, s1);
+	apply_op(p, s1, s2);
 	return (0);
 }
 
 void	init(t_param *p)
 {
 	p->i = 0;
-	p->tab = malloc(sizeof(int) * 2048);
+	p->nb = 0;
+	p->tab = malloc(sizeof(int) * 2048); // need to make a greated size or i should use a stack ? 
+	p->a1 = NULL;
+	p->b1 = NULL;
 }

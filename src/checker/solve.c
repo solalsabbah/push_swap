@@ -20,26 +20,30 @@ int position(int a)
 
 int is_sort(t_stack *s1, t_stack *s2)
 {
+	int p;
+
+	p = 0;
 	while (s1) 
 	{
 		if (s1->next && s1->val > s1->next->val)
-			return (0);
+		{
+			p = 1;
+			break;
+		}
 		s1 = s1->next;
 	}
-	if (!s2)
-		return (1);
+	if (!s2 && p == 0)
+		printf("OK\n");	
+	else
+		printf("KO\n");
 	return (0);
 }
 
-int apply_op(t_param *p, t_stack *s1)
+int apply_op(t_param *p, t_stack *s1, t_stack *s2)
 {
 	int n;
-	t_stack *adr;
-	t_stack *s2;
 
-	n = 0;
-	s2 = malloc(sizeof(t_stack));
-	s2 = NULL;
+	n = -1;
 	while (n < p->i)
 	{
 		if ((p->tab[n] == SA || p->tab[n] == SS) && s1 && s1->next)
@@ -48,17 +52,20 @@ int apply_op(t_param *p, t_stack *s1)
 			swap(s2);
 		if (p->tab[n] == PB && s1)
 		{
-			adr = s1;
-			s2 = add_link(s2, s1->val);
-			s1 = s1->next;
-			free(adr);
+			push(s1, s2, p);
+			s1 = p->a1;
+			s2 = p->b1;
+			p->a1 = NULL;
+			p->b1 = NULL;
+			
 		}
 		if (p->tab[n] == PA && s2)
 		{
-			adr = s2;
-			s1 = add_link(s1, s2->val);
-			s2 = s2->next;
-			free(adr);
+			push(s2, s1, p);
+			s2 = p->a1;
+			s1 = p->b1;
+			p->a1 = NULL;
+			p->b1 = NULL;
 		}	
 		if ((p->tab[n] == RA || p->tab[n] == RR) && s1)
 			s1 = rotate_list(s1);
@@ -70,10 +77,7 @@ int apply_op(t_param *p, t_stack *s1)
 			s2 = inv_rotate(s2);
 		n++;
 	}
-	print_stack(s1, s2);
-	if (is_sort(s1, s2) == 1) 
-		printf("OK\n");
-	else
-		printf("KO\n");
+	print_stack(s1, s2);	
+	is_sort(s1, s2);
 	return (0);
 }
