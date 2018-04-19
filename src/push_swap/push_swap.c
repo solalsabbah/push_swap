@@ -15,14 +15,14 @@
 int	main(int ac, char **av)
 {
 	int		i;
-	int 	med;
+	t_param		p;
 	t_stack		*s1;
 	t_stack 	*s2;
-	
+
 	i = 1;
-	s2 = malloc(sizeof(t_stack));
 	s1 = NULL;
 	s2 = NULL;
+	init(&p);
 	if (ac == 1)
 		return (0);
 	while (--ac > 0)
@@ -34,8 +34,7 @@ int	main(int ac, char **av)
 		}
 		s1 = add_link(s1, ft_atoi(av[ac]));
 	}
-	med = median_stack(s1);
-	split_stack(med, s1, s2);
-	printf("med %d\n", med);
+	median_stack(&p, s1);
+	split_stack(&p, s1, s2);
 	return (0);
 }

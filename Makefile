@@ -30,6 +30,8 @@ CHECKER_SRC = checker.c\
 PUSHSWAP_SRC = 	push_swap.c\
 				median_stack.c\
 				bubble_sort.c\
+				sorting.c\
+				data_stack.c\
 
 SHARED_OBJ = $(SHARED_SRC:.c=.o)
 CHECKER_OBJ = $(CHECKER_SRC:.c=.o)
