@@ -36,6 +36,7 @@ typedef struct	s_param
 	int			nb; // count of element in stack 
 	int			i;  // used for table of operands
 	int			med;
+	int			sens;
 	int			*tab;
 	void			*a1;
 	void			*b1;
@@ -58,7 +59,7 @@ int			add_op(int op, t_param *p);
 int			median_stack(t_param *p, t_stack *s1);
 int			last_val(t_stack *s1);
 int			is_sorted(t_stack *s1);
-int			min_value(t_stack *s1);
+int			min_value(t_stack *s1, t_param *p);
 
 int			*bubble_sort(int n, int *tab);
 

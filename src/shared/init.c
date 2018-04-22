@@ -65,4 +65,5 @@ void	init(t_param *p)
 	p->tab = malloc(sizeof(int) * 2048); // need to make a greated size or i should use a stack ? 
 	p->a1 = NULL;
 	p->b1 = NULL;
+	p->sens = 0;
 }
