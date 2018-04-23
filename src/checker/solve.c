@@ -77,7 +77,7 @@ int apply_op(t_param *p, t_stack *s1, t_stack *s2)
 			s2 = inv_rotate(s2);
 		n++;
 	}
-	print_stack(s1, s2);	
+//	print_stack(s1, s2);	
 	is_sort(s1, s2);
 	return (0);
 }

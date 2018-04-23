@@ -14,7 +14,7 @@ CHECKER = checker
 PUSHSWAP = push_swap
 
 CC = gcc
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -Werror
 LIBFT= -Llibft -lft
 
 INC_DIR = inc/
