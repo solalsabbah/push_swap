@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 18:28:43 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/04/11 18:45:50 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/04/24 14:33:37 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ t_stack *rotate_list(t_stack *s1)
 	t_stack *tmp;
 	t_stack *adr;
 
-	adr = s1->next;
+	if (s1->next) 
+		adr = s1->next;
+	else 
+		adr = NULL;
 	tmp = s1;
 	while (s1 != NULL)
 	{
