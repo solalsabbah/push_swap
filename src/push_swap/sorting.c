@@ -10,8 +10,10 @@ int	last_val(t_stack *s1)
 void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the stack using only RA && RRA && PB && PA
 {
 	int min;
+	int a;
 
-	while (s1->next && last_val(s1) <= s1->next->val)
+	a = 0;
+	while (is_sorted(s1) && s1->next && last_val(s1) <= s1->next->val)
 	{
 		if (!s2)
 		{	
@@ -19,6 +21,7 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 			s1 = p->a1;
 			s2 = p->b1;
 			printf("[PB]\n");
+			a++;
 		}
 		//	if (s1->next && s1->next->val == min)
 		//	{
@@ -29,9 +32,8 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 		//	{
 		s1 = rotate_list(s1);
 		printf("[RA]\n");
+		a++;
 		//	}
-
-		// ca segfault pour 2 parametres
 	}
 	min = min_value(s1, p);
 	while (s1->val != min || !is_sorted(s1))
@@ -40,16 +42,19 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 		{
 			swap(s1);
 			printf("[SA]\n");
+			a++;
 		}
 		else if (p->sens == 0 && s1->val != min)
 		{
 			s1 = rotate_list(s1);
 			printf("[RA]\n");
+			a++;
 		}
 		else
 		{
 			s1 = inv_rotate(s1);
 			printf("[RRA]\n");
+			a++;
 		}
 		if (s1->val == min && !is_sorted(s1))
 		{
@@ -57,6 +62,7 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 			s1 = p->a1;
 			s2 = p->b1;
 			printf("[PB]\n");
+			a++;
 			min = min_value(s1, p);
 		}
 	}
@@ -66,6 +72,8 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 		s2 = p->a1;
 		s1 = p->b1;
 		printf("[PA]\n");
+			a++;
 	}
+	printf("compteur : %d\n", a);
 	print_stack(s1, s2);
 }
