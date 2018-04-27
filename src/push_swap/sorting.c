@@ -1,13 +1,50 @@
 #include "checker.h"
 
-int	last_val(t_stack *s1)
+void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the stack using only RA && RRA && PB && PA
 {
-	while (s1->next)
-		s1 = s1->next;
-	return (s1->val);
+	int med;
+	int min;
+
+	med = median_stack(p, s1);
+	// tant que s1 est trie que s2 est vide
+	
+	while (mean_value(s1) > med)
+	while (!is_sorted(s1) && nb_elem(s1) > nb_elem(s2))
+	{
+		if (s1 && s1->val <= med)
+		{
+			push(s1, s2, p);  // PB
+			s1 = p->a1;
+			s2 = p->b1;
+			printf("[PB]\n");
+		}
+		else 
+		{
+			s1 = rotate_list(s1);
+			printf("[RA]\n");
+		}
+	}
+	//med = median_stack(p, s2);
+	min = min_value(s1, p);
+	while (s2 && s2->next != NULL)
+	{
+		if (s2->val > min) 
+		{
+			push(s2, s1, p);  // PB
+			s2 = p->a1;
+			s1 = p->b1;
+			printf("[PA]\n");
+		}
+		else
+		{
+			s2 = rotate_list(s2);
+			printf("[RB]\n");
+		}
+	}
+	print_stack(s1, s2);
 }
 
-void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the stack using only RA && RRA && PB && PA
+/*void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the stack using only RA && RRA && PB && PA
 {
 	int min;
 	int a;
@@ -75,5 +112,5 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 			a++;
 	}
 	printf("compteur : %d\n", a);
-	print_stack(s1, s2);
-}
+//	print_stack(s1, s2);
+}*/

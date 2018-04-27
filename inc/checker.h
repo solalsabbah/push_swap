@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:53:30 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/04/11 18:33:30 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/04/27 18:19:38 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ int			median_stack(t_param *p, t_stack *s1);
 int			last_val(t_stack *s1);
 int			is_sorted(t_stack *s1);
 int			min_value(t_stack *s1, t_param *p);
+int			max_value(t_stack *s1, t_param *p);
+int			mean_value(t_stack *s1, t_param *p);
+int			nb_elem(t_stack *s);
 
 int			*bubble_sort(int n, int *tab);
 
