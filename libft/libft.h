@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 15:52:58 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/04/11 15:24:48 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/04/27 16:32:46 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef	struct		s_list
 
 int					get_next_line(const int fd, char **line);
 int					ft_isnumber(char *str);
+int					is_int(char *str);
 long long			abs_val(long long nb);
 char				**ft_split(char *str);
 void				*ft_memmove(void *dst, const void *src, size_t len);
@@ -59,7 +60,7 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
-int					ft_atoi(const char *str);
+long int			ft_atoi(const char *str);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
 size_t				count_before(char const *s);
