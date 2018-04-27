@@ -37,27 +37,6 @@ int	validate_content(char *line, t_param *p)
 	return (n);
 }
 
-int	checker(t_param *p, t_stack *s1)
-{
-	int		fd;
-	char		*line;
-	t_stack		*s2;
-
-	fd = 0;
-	s2 = malloc(sizeof(t_stack));
-	s2 = NULL; // it segfault without it ! 
-	while (get_next_line(fd, &line) != -1)
-	{
-		if (ft_strcmp(line, "") == 0)
-			break;
-		if (validate_content(line, p) == 0)
-			printf("Wrong operand\n");
-		free(line);
-	}
-	apply_op(p, s1, s2);
-	return (0);
-}
-
 void	init(t_param *p)
 {
 	p->i = 0;
