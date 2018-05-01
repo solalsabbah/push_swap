@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:53:30 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/04/27 18:19:38 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/01 14:04:57 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ struct s_stack
 };
 
 
-int			checker(t_param *p, t_stack *s1);
+int			checker(t_stack *s1);
 int			apply_op(t_param *p, t_stack *s1, t_stack *s2);
-int			checker(t_param *p, t_stack *s1);
 int			validate_content(char *line, t_param *p);
 int			add_op(int op, t_param *p);
 int			median_stack(t_param *p, t_stack *s1);
@@ -63,6 +62,7 @@ int			min_value(t_stack *s1, t_param *p);
 int			max_value(t_stack *s1, t_param *p);
 int			mean_value(t_stack *s1, t_param *p);
 int			nb_elem(t_stack *s);
+int			duplicated(t_stack *s1);
 
 int			*bubble_sort(int n, int *tab);
 

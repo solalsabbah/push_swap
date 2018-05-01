@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 15:32:49 by ssabbah           #+#    #+#              #
-#    Updated: 2018/04/11 18:31:57 by ssabbah          ###   ########.fr        #
+#    Updated: 2018/05/01 14:04:42 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SHARED_SRC =	solve.c\
 				print_stacks.c\
 				init.c\
 				stack_op.c\
+				duplicated.c\
 
 CHECKER_SRC = checker.c\
 

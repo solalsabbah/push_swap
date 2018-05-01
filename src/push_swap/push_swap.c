@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 15:55:00 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/04/27 16:48:29 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/01 14:10:14 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,15 @@ int	main(int ac, char **av)
 			printf("Usage : please only put number\n");
 			return (0);
 		}
+		if (is_int(av[ac]) == 0)
+		{
+			printf("Error\n");
+			return (0);
+		}
 		s1 = add_link(s1, ft_atoi(av[ac]));
 	}
+	if (duplicated(s1) == 1)
+		return (0);
 	median_stack(&p, s1);
 	split_stack(&p, s1, s2);
 	return (0);

@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_stacks.c                                     :+:      :+:    :+:   */
+/*   duplicated.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/09 20:00:06 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/01 14:12:56 by ssabbah          ###   ########.fr       */
+/*   Created: 2018/05/01 14:04:12 by ssabbah           #+#    #+#             */
+/*   Updated: 2018/05/01 14:05:17 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	print_stack(t_stack *s1, t_stack *s2)
+int	duplicated(t_stack *s1)
 {
-	while (s1 || s2)
+	int		tmp;
+	void	*adr;
+
+	while (s1)
 	{
-		if (!s1)
-			printf("       ||");
-		if (s1)
+		tmp = s1->val;
+		adr = s1->next;
+		s1 = s1->next;
+		while (s1)
 		{
-			printf("[%4d] ||", s1->val);
+			if (tmp == s1->val)
+			{
+				printf("doublon\n");
+				return (1);
+			}
 			s1 = s1->next;
 		}
-		if (!s2)
-			printf("   \n");
-		if (s2)
-		{
-			printf(" [%4d]\n", s2->val);
-			s2 = s2->next;
-		}
+		s1 = adr;
 	}
+	return (0);
 }
