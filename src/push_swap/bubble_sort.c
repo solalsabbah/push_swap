@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "checker.h"
+
 int			*bubble_sort(int n, int *tab)
 {
 	int c;
@@ -17,9 +19,9 @@ int			*bubble_sort(int n, int *tab)
 
 	c = 0;
 	tmp = 0;
-	while (c != n)
+	while (c != n - 1)
 	{
-		while (c < n)
+		while (c < n - 1)
 		{
 			if (tab[c] > tab[c + 1])
 			{

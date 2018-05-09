@@ -12,6 +12,46 @@ int			below_median(int med, t_stack *s)
 	return (0);
 }
 
+int			above_median(int med, t_stack *s)
+{
+	while (s)
+	{
+		if (s->val >= med) 
+			return (1);
+		s = s->next;
+	}
+	return (0);
+}
+void		split_second_stack(t_param *p, t_stack *s1, t_stack *s2)
+{	
+	int med;
+
+	med = median_stack(p, s2);
+	printf("median %d\n", med);
+	while (above_median(med, s2) == 1)
+	{
+		if (s2 && s2->val >= med)
+		{
+			push(s2, s1, p);  // PB
+			s2 = p->a1;
+			s1  = p->b1;
+			printf("[PA]\n");
+		}
+		else 
+		{
+			s2 = rotate_list(s2);
+			printf("[RA]\n");
+		}
+	}
+	p->a1 = s1;
+	p->b1 = s2;
+	if (nb_elem(s2) > 1) 
+	{
+		printf("nb elem %d\n", nb_elem(s2));
+//		split_second_stack(p, s1, s2);
+	}
+}
+
 void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the stack using only RA && RRA && PB && PA
 {
 	int med;
@@ -20,7 +60,7 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 	med = median_stack(p, s1);
 	printf("%d\n", med);
 	
-	while (!is_sorted(s1) && below_median(med, s1))
+	while (below_median(med, s1))
 	{
 		if (s1 && s1->val <= med)
 		{
@@ -36,6 +76,7 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 		}
 	}
 	//med = median_stack(p, s2);
+	printf("segfault");
 	min = min_value(s1, p);
 /*	while (s2 && s2->next != NULL)
 	{
@@ -52,6 +93,11 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 			printf("[RB]\n");
 		}
 	}*/
+	print_stack(s1, s2);
+	printf("\n");
+	split_second_stack(p, s1, s2);
+	s1 = p->a1;
+	s2 = p->b1;
 	print_stack(s1, s2);
 }
 

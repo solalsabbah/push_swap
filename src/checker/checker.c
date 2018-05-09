@@ -14,7 +14,7 @@
 
 int	checker(t_stack *s1)
 {
-	int			fd;
+	int		fd;
 	char		*line;
 	t_stack		*s2;
 	t_param		p;
@@ -29,7 +29,7 @@ int	checker(t_stack *s1)
 			break ;
 		if (validate_content(line, &p) == 0)
 			printf("Wrong operand\n");
-		free(line);
+		free(line); // free necessary ?
 	}
 	apply_op(&p, s1, s2);
 	return (0);
@@ -37,7 +37,7 @@ int	checker(t_stack *s1)
 
 int	main(int ac, char **av)
 {
-	int			i;
+	int		i;
 	t_stack		*s1;
 
 	if (ac == 1)
@@ -61,4 +61,5 @@ int	main(int ac, char **av)
 	if (duplicated(s1) == 1)
 		return (0);
 	checker(s1);
+	while (1);
 }

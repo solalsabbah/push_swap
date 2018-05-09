@@ -15,27 +15,23 @@
 int			median_stack(t_param *p, t_stack *s1)
 {
 	int	n;
+	int	c;
 	int 	*tab;
 	void	*adr;
 
 	adr = s1; 
-	n = 0;
-	while (s1 || adr)
-	{
-		if (!adr)
-			tab[n] = s1->val;
-		n++;
+	n = nb_elem(s1);
+	c = 0;
+	tab = malloc(sizeof(int) * (n + 1));
+	while (s1)
+	{	
+		tab[c] = s1->val;
 		s1 = s1->next;
-		if (s1 == NULL && adr != NULL) 
-		{
-			s1 = adr;
-			adr = NULL;
-			tab = malloc(sizeof(int) * n);
-			n = 0;
-		}
-	}	
-	bubble_sort(n, tab);
+		c++;
+	}
+	bubble_sort(n, tab); // modifying directly in the adress
+	// until here ok ! 
 	p->nb = (n + 1) / 2; 		// sorting my tab trough point
-	p->med = tab[p->nb];
-	return (tab[p->nb]);		// returnin the median value
+	p->med = tab[p->nb - 1];
+	return (tab[p->nb - 1]);		// returnin the median value
 }
