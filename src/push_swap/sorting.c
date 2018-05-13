@@ -16,21 +16,21 @@ int			above_median(int med, t_stack *s)
 {
 	while (s)
 	{
-		if (s->val >= med) 
+		if (s->val > med) 
 			return (1);
 		s = s->next;
 	}
 	return (0);
 }
+
 void		split_second_stack(t_param *p, t_stack *s1, t_stack *s2)
 {	
 	int med;
 
 	med = median_stack(p, s2);
-	printf("median %d\n", med);
 	while (above_median(med, s2) == 1)
 	{
-		if (s2 && s2->val >= med)
+		if (s2 && s2->val > med)
 		{
 			push(s2, s1, p);  // PB
 			s2 = p->a1;
@@ -45,11 +45,10 @@ void		split_second_stack(t_param *p, t_stack *s1, t_stack *s2)
 	}
 	p->a1 = s1;
 	p->b1 = s2;
+//	print_stack(s1, s2);
+//	printf("\n");
 	if (nb_elem(s2) > 1) 
-	{
-		printf("nb elem %d\n", nb_elem(s2));
-//		split_second_stack(p, s1, s2);
-	}
+		split_second_stack(p, s1, s2);
 }
 
 void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the stack using only RA && RRA && PB && PA
@@ -58,25 +57,26 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 	int min;
 
 	med = median_stack(p, s1);
-	printf("%d\n", med);
-	
-	while (below_median(med, s1))
+	if (nb_elem(s1) > 1)
 	{
-		if (s1 && s1->val <= med)
+		while (below_median(med, s1))
 		{
-			push(s1, s2, p);  // PB
-			s1 = p->a1;
-			s2 = p->b1;
-			printf("[PB]\n");
-		}
-		else 
-		{
-			s1 = rotate_list(s1);
-			printf("[RA]\n");
+			if (s1 && s1->val <= med)
+			{
+				push(s1, s2, p);  // PB
+				s1 = p->a1;
+				s2 = p->b1;
+				printf("[PB]\n");
+			}
+			else 
+			{
+				s1 = rotate_list(s1);
+				printf("[RA]\n");
+			}
 		}
 	}
 	//med = median_stack(p, s2);
-	printf("segfault");
+//	printf("segfault");
 	min = min_value(s1, p);
 /*	while (s2 && s2->next != NULL)
 	{
@@ -93,11 +93,14 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 			printf("[RB]\n");
 		}
 	}*/
-	print_stack(s1, s2);
-	printf("\n");
-	split_second_stack(p, s1, s2);
-	s1 = p->a1;
-	s2 = p->b1;
+//	print_stack(s1, s2);
+//	printf("\n");
+	if (s2) 
+	{
+		split_second_stack(p, s1, s2);
+		s1 = p->a1;
+		s2 = p->b1;
+	}
 	print_stack(s1, s2);
 }
 
