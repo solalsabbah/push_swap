@@ -18,8 +18,8 @@ void 		sort_clusters(t_param *p, t_stack *s1, t_stack *s2)
 
 	med = s1->med;
 	// ca boucle infinit
-	while (s1 && !is_sorted(s1))
-	{
+//	while (s1 && !is_sorted(s1))
+//	{
 		if (s1->med < s1->next->med)
 		{
 			push(s1, s2, p);  // PB
@@ -27,7 +27,7 @@ void 		sort_clusters(t_param *p, t_stack *s1, t_stack *s2)
 			s2 = p->b1;
 			printf("[PB]\n");
 		}
-	}
+//	}
 }
 
 void		split_second_stack(t_param *p, t_stack *s1, t_stack *s2)
@@ -55,8 +55,11 @@ void		split_second_stack(t_param *p, t_stack *s1, t_stack *s2)
 	p->b1 = s2;
 	if (nb_elem(s2) > 1) 
 		split_second_stack(p, s1, s2);
-	else 
+	else
+	{ 
+		s2->med = med - 1;
 		sort_clusters(p, s1, s2);
+	}
 }
 
 void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the stack using only RA && RRA && PB && PA

@@ -23,8 +23,12 @@ void	swap(t_stack *s1)
 
 void	push(t_stack *s1, t_stack *s2, t_param *p) // push s1 on s2
 {
-	p->b1 = add_link(s2, s1->val);
-	p->a1 = s1->next;
+	void *tmp;
+
+	tmp = s1->next;
+	s1->next = s2;
+	p->b1 = s1;
+	p->a1 = tmp;
 //	free(s1); // qd je free ca fait boucle infi
 //	free(s2);	
 }	

@@ -27,7 +27,7 @@ void	print_stack(t_stack *s1, t_stack *s2)
 			printf("   \n");
 		if (s2)
 		{
-			printf(" [%4d]\n", s2->val);
+			printf(" [%4d] %d\n", s2->val, s2->med);
 			s2 = s2->next;
 		}
 	}
