@@ -6,11 +6,42 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:19:37 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/04/27 17:17:30 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/15 13:37:38 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+void		init_med(t_stack *s1, int med)
+{
+	while (s1)
+	{
+		s1->med = med;
+		s1 = s1->next;
+	}
+}
+
+int			below_median(int med, t_stack *s)
+{
+	while (s)
+	{
+		if (s->val <= med)
+			return (1);
+		s = s->next;
+	}
+	return (0);
+}
+
+int			above_median(int med, t_stack *s)
+{
+	while (s)
+	{
+		if (s->val > med)
+			return (1);
+		s = s->next;
+	}
+	return (0);
+}
 
 int			median_stack(t_param *p, t_stack *s1)
 {

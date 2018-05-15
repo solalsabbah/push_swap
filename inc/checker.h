@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:53:30 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/01 14:04:57 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/15 13:47:20 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_stack t_stack;
 struct s_stack
 {
 	int			val;
+	int			med;
 	t_stack		*next;
 };
 
@@ -76,5 +77,9 @@ void		swap(t_stack *s1);
 void		print_elem(t_stack *s1);
 void		print_stack(t_stack *s1, t_stack *s2);
 void		init(t_param *p);
+
+void		init_med(t_stack *s1, int med);
+int			below_median(int med, t_stack *s);
+int			above_median(int med, t_stack *s);
 
 #endif
