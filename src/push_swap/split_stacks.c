@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 14:23:12 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/22 16:25:23 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/22 16:32:52 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 			printf("[PA]\n");
 
 	}
-	print_stack(s1, s2);
-	printf("EXIT\n");
-	exit (0);
+//	print_stack(s1, s2);
+//	printf("EXIT\n");
+//	exit (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 19:38:55 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/01 14:05:35 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/22 16:32:51 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,4 @@ int	main(int ac, char **av)
 	if (duplicated(s1) == 1)
 		return (0);
 	checker(s1);
-	while (1);
 }
