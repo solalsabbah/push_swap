@@ -1,50 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
+/*   split_stacks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/15 13:34:57 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/17 14:01:02 by ssabbah          ###   ########.fr       */
+/*   Created: 2018/05/22 14:23:12 by ssabbah           #+#    #+#             */
+/*   Updated: 2018/05/22 16:25:23 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void 		sort_clusters(t_param *p, t_stack *s1, t_stack *s2)
-{
-	int med;
-
-	med = s1->med;
-	while (s1 && !is_sorted(s1))
-	{
-		if (s1->val < s1->next->val)
-		{
-			push(s1, s2, p);  // PB
-			s1 = p->a1;
-			s2 = p->b1;
-			printf("[PB]\n");
-		}
-		else
-		{
-			swap(s1);
-			printf("[SA]\n");
-		}
-		while (s2->val < s2->next->val)
-		{
-			swap(s2);
-			printf("[SB]\n");
-			push(s2, s1, p);  // PA
-			s2 = p->a1;
-			s1  = p->b1;
-			printf("[PA]\n");
-		}
-	}
-}
-
 void		split_second_stack(t_param *p, t_stack *s1, t_stack *s2)
-{	
+{
 	int med;
 
 	med = median_stack(p, s2);
@@ -63,7 +32,7 @@ void		split_second_stack(t_param *p, t_stack *s1, t_stack *s2)
 				printf("[SA]\n");
 			}
 		}
-		else 
+		else
 		{
 			s2 = rotate_list(s2);
 			printf("[RB]\n");
@@ -71,36 +40,36 @@ void		split_second_stack(t_param *p, t_stack *s1, t_stack *s2)
 	}
 	p->a1 = s1;
 	p->b1 = s2;
-	if (nb_elem(s2) > 1) 
+	if (nb_elem(s2) > 1)
 		split_second_stack(p, s1, s2);
 	else
-	{ 
-		s2->med = med - 1;
+	{
+		s2->med = s2->val - 1;
 		sort_clusters(p, s1, s2);
 	}
 }
 
 void		split_first_stack(t_param *p, t_stack *s1, t_stack *s2)
-{	
+{
 	int med;
 
 	med = median_stack(p, s1);
-	while (above_median(med, s2) == 1)
+	while (below_median(med, s1) == 1)
 	{
-		if (s2 && s2->val > med)
+		if (s1 && s1->val <= med)
 		{
 			push(s1, s2, p);  // PB
 			s1 = p->a1;
 			s2 = p->b1;
 			printf("[PB]\n");
 			s2->med = med;
-			if (s2 && s2->next  && s2->val > s2->next->val)
+			if (s2 && s2->next && s2->val < s2->next->val)
 			{
 				swap(s2);
 				printf("[SB]\n");
 			}
 		}
-		else 
+		else
 		{
 			s1 = rotate_list(s1);
 			printf("[RA]\n");
@@ -108,25 +77,10 @@ void		split_first_stack(t_param *p, t_stack *s1, t_stack *s2)
 	}
 	p->a1 = s1;
 	p->b1 = s2;
-	if (nb_elem(s2) > 1) 
-		split_second_stack(p, s1, s2);
+	if (nb_elem(s1) > 1)
+		split_first_stack(p, s1, s2);
 	else
-	{ 
-		s2->med = med - 1;
-		printf("FINIShED \n\n\n\n");
-		//sort_clusters(p, s1, s2);
-	}
-}
-
-
-void		sort_biggest_cluster(t_param *p, t_stack *s1, t_stack *s2)
-{
-	printf("je suis la\n\n");
-	//segfai;t
-	split_first_stack(p, s1, s2);
-	s1 = p->a1;
-	s2 = p->b1;
-	print_stack(s1, s2);
+		s1->med = s1->val - 1;
 }
 
 void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the stack using only RA && RRA && PB && PA
@@ -135,6 +89,7 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 	int min;
 
 	med = median_stack(p, s1);
+	p->min_med = med;
 	if (nb_elem(s1) > 1)
 	{
 		while (below_median(med, s1))
@@ -146,23 +101,32 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 				s2 = p->b1;
 				printf("[PB]\n");
 			}
-			else 
+			else
 			{
 				s1 = rotate_list(s1);
 				printf("[RA]\n");
 			}
 		}
 	}
-	init_med(s1, med);
+	init_med(s1, s2, med);
 	min = min_value(s1, p);
 	sort_biggest_cluster(p, s1, s2); //can biggest sort cluster now
+	s1 = p->a1;
+	s2 = p->b1;
+	p->max_med = s2->med;
+	if (s2)
+		split_second_stack(p, s1, s2);
+	s1 = p->a1;
+	s2 = p->b1;
+	while (s2)
+	{
+			push(s2, s1, p);  // PA
+			s2 = p->a1;
+			s1  = p->b1;
+			printf("[PA]\n");
+
+	}
+	print_stack(s1, s2);
 	printf("EXIT\n");
 	exit (0);
-	if (s2) 
-	{
-		split_second_stack(p, s1, s2);
-	}
-		s1 = p->a1;
-		s2 = p->b1;
-	print_stack(s1, s2);
 }

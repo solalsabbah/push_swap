@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:53:30 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/15 13:47:20 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/22 16:16:50 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ typedef struct	s_param
 	int			nb; // count of element in stack 
 	int			i;  // used for table of operands
 	int			med;
+	int			min_med;
+	int			max_med;
 	int			sens;
 	int			*tab;
-	void			*a1;
-	void			*b1;
+	void		*a1;
+	void		*b1;
 }				t_param;
 
 typedef struct s_stack t_stack;
@@ -71,14 +73,19 @@ t_stack		*add_link(t_stack *s1, int val);
 t_stack		*inv_rotate(t_stack *s1);
 t_stack		*rotate_list(t_stack *s1);
 
+void		sort_clusters(t_param *p, t_stack *s1, t_stack *s2);
+void		sort_high_clusters(t_param *p, t_stack *s1, t_stack *s2);
+void		sort_biggest_cluster(t_param *p, t_stack *s1, t_stack *s2);
 void		split_stack(t_param *p, t_stack *s1, t_stack *s2);
+void		split_second_stack(t_param *p, t_stack *s1, t_stack *s2);
+void		split_first_stack(t_param *p, t_stack *s1, t_stack *s2);
 void		push(t_stack *s1, t_stack *s2, t_param *p);
 void		swap(t_stack *s1);
 void		print_elem(t_stack *s1);
 void		print_stack(t_stack *s1, t_stack *s2);
 void		init(t_param *p);
 
-void		init_med(t_stack *s1, int med);
+void		init_med(t_stack *s1, t_stack *s2, int med);
 int			below_median(int med, t_stack *s);
 int			above_median(int med, t_stack *s);
 

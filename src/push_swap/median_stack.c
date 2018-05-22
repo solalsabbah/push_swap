@@ -6,18 +6,23 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:19:37 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/15 13:37:38 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/22 15:35:53 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void		init_med(t_stack *s1, int med)
+void		init_med(t_stack *s1, t_stack *s2, int med)
 {
 	while (s1)
 	{
 		s1->med = med;
 		s1 = s1->next;
+	}
+	while (s2)
+	{
+		s2->med = med - 1;
+		s2 = s2->next;
 	}
 }
 

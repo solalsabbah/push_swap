@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 18:28:43 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/15 13:44:54 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/22 15:40:32 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ t_stack *inv_rotate(t_stack *s1)
 
 t_stack *rotate_list(t_stack *s1)
 {
-	/// how to free the first stack  ? //
 	t_stack *tmp;
 	t_stack *adr;
 
