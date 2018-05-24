@@ -66,7 +66,7 @@ int			max_value(t_stack *s1, t_param *p);
 int			mean_value(t_stack *s1, t_param *p);
 int			nb_elem(t_stack *s);
 int			duplicated(t_stack *s1);
-
+int			lst_size(t_stack *s);
 int			*bubble_sort(int n, int *tab);
 
 t_stack		*add_link(t_stack *s1, int val);

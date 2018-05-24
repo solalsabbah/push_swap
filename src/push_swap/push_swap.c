@@ -12,6 +12,28 @@
 
 #include "checker.h"
 
+
+void	sort_three(t_stack *s1)
+{
+	if(!is_sorted(s1))
+	{
+		if (s1->val < s1->next->val && s1->val < s1->next->val)
+		{
+			printf("[RRA]\n");
+			printf("[SA]\n");
+		}
+	}
+}
+void	sort_two(t_stack *s1)
+{
+	if(!is_sorted(s1))
+	{
+		swap(s1);	
+		printf("[SA]\n");
+	}
+		
+}
+
 int	main(int ac, char **av)
 {
 	int		i;
@@ -41,6 +63,18 @@ int	main(int ac, char **av)
 	}
 	if (duplicated(s1) == 1)
 		return (0);
+	if (lst_size(s1) == 1)
+		return (0);
+	if (lst_size(s1) == 2)
+	{
+		sort_two(s1);
+		return (0);
+	}
+	if (lst_size(s1) == 3)
+	{
+		sort_three(s1);
+		return (0);
+	}
 	median_stack(&p, s1);
 	split_stack(&p, s1, s2);
 	return (0);
