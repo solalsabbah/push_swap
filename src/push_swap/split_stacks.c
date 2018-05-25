@@ -17,7 +17,7 @@ void		split_second_stack(t_param *p, t_stack *s1, t_stack *s2)
 	int med;
 
 	med = median_stack(p, s2);
-	while (above_median(med, s2) == 1)
+	while (above_median(med, s2) == 1 && !is_sorted(s2))
 	{
 		if (s2 && s2->val > med)
 		{
@@ -40,7 +40,7 @@ void		split_second_stack(t_param *p, t_stack *s1, t_stack *s2)
 	}
 	p->a1 = s1;
 	p->b1 = s2;
-	if (nb_elem(s2) > 1)
+	if (nb_elem(s2) > 1 && !is_sorted(s2))
 		split_second_stack(p, s1, s2);
 	else
 	{
@@ -54,7 +54,7 @@ void		split_first_stack(t_param *p, t_stack *s1, t_stack *s2)
 	int med;
 
 	med = median_stack(p, s1);
-	while (below_median(med, s1) == 1)
+	while (below_median(med, s1) == 1 && !is_sorted(s1))
 	{
 		if (s1 && s1->val <= med)
 		{
@@ -77,13 +77,13 @@ void		split_first_stack(t_param *p, t_stack *s1, t_stack *s2)
 	}
 	p->a1 = s1;
 	p->b1 = s2;
-	if (nb_elem(s1) > 1)
+	if (nb_elem(s1) > 1 && !is_sorted(s1))
 		split_first_stack(p, s1, s2);
 	else
 		s1->med = s1->val - 1;
 }
 
-void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the stack using only RA && RRA && PB && PA
+void		split_stack(t_param *p, t_stack *s1, t_stack *s2)
 {
 	int med;
 	int min;
@@ -92,7 +92,7 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 	p->min_med = med;
 	if (nb_elem(s1) > 1)
 	{
-		while (below_median(med, s1))
+		while (below_median(med, s1) && !is_sorted(s1)) // adding is sorted  
 		{
 			if (s1 && s1->val <= med)
 			{
@@ -108,6 +108,7 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 			}
 		}
 	}
+	print_stack(s1, s2); // print stack
 	init_med(s1, s2, med);
 	min = min_value(s1, p);
 	sort_biggest_cluster(p, s1, s2); //can biggest sort cluster now
@@ -126,7 +127,4 @@ void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // one way to sort the s
 			printf("[PA]\n");
 
 	}
-//	print_stack(s1, s2);
-//	printf("EXIT\n");
-//	exit (0);
 }

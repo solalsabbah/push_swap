@@ -34,6 +34,7 @@ PUSHSWAP_SRC = 	push_swap.c\
 				clustering.c\
 				split_stacks.c\
 				data_stack.c\
+				special_cases.c\
 				lst_size.c\
 
 SHARED_OBJ = $(SHARED_SRC:.c=.o)

@@ -69,6 +69,9 @@ int			duplicated(t_stack *s1);
 int			lst_size(t_stack *s);
 int			*bubble_sort(int n, int *tab);
 
+void			sort_two(t_stack *s1);
+void			sort_three(t_stack *s1);
+
 t_stack		*add_link(t_stack *s1, int val);
 t_stack		*inv_rotate(t_stack *s1);
 t_stack		*rotate_list(t_stack *s1);

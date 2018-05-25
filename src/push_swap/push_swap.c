@@ -12,36 +12,36 @@
 
 #include "checker.h"
 
-
-void	sort_three(t_stack *s1)
+int	verify(t_param *p, t_stack *s1, t_stack *s2)
 {
-	if(!is_sorted(s1))
+	if (is_sorted(s1))
+		return (1);
+	if (lst_size(s1) == 1)
+		return (1);
+	if (lst_size(s1) == 2)
 	{
-		if (s1->val < s1->next->val && s1->val < s1->next->val)
-		{
-			printf("[RRA]\n");
-			printf("[SA]\n");
-		}
+		sort_two(s1);
+		return (1);
 	}
-}
-void	sort_two(t_stack *s1)
-{
-	if(!is_sorted(s1))
+	if (lst_size(s1) == 3)
 	{
-		swap(s1);	
-		printf("[SA]\n");
+		sort_three(s1);
+		return (1);
 	}
-		
+	else 
+	{
+		median_stack(p, s1);
+		split_stack(p, s1, s2);
+	}
+	return (0);
 }
 
 int	main(int ac, char **av)
 {
-	int		i;
 	t_param		p;
 	t_stack		*s1;
 	t_stack 	*s2;
 
-	i = 1;
 	s1 = NULL;
 	s2 = NULL;
 	init(&p);
@@ -61,21 +61,6 @@ int	main(int ac, char **av)
 		}
 		s1 = add_link(s1, ft_atoi(av[ac]));
 	}
-	if (duplicated(s1) == 1)
-		return (0);
-	if (lst_size(s1) == 1)
-		return (0);
-	if (lst_size(s1) == 2)
-	{
-		sort_two(s1);
-		return (0);
-	}
-	if (lst_size(s1) == 3)
-	{
-		sort_three(s1);
-		return (0);
-	}
-	median_stack(&p, s1);
-	split_stack(&p, s1, s2);
+	verify(&p, s1, s2);
 	return (0);
 }
