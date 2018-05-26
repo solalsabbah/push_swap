@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 14:26:58 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/22 16:25:17 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/26 20:33:03 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ void 		sort_clusters(t_param *p, t_stack *s1, t_stack *s2)
 	p->b1 = s2;
 }
 
-void		sort_biggest_cluster(t_param *p, t_stack *s1, t_stack *s2)
+/*void		sort_biggest_cluster(t_param *p, t_stack *s1, t_stack *s2)
 {
 	split_first_stack(p, s1, s2);
 	s1 = p->a1;
 	s2 = p->b1;
 	sort_high_clusters(p, s1, s2);
-}
+}*/

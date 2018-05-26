@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:53:30 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/22 16:16:50 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/26 20:17:59 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct	s_param
 {	
 	int			nb; // count of element in stack 
 	int			i;  // used for table of operands
+	int			min;
+	int			max;
 	int			med;
 	int			min_med;
 	int			max_med;
@@ -61,13 +63,15 @@ int			add_op(int op, t_param *p);
 int			median_stack(t_param *p, t_stack *s1);
 int			last_val(t_stack *s1);
 int			is_sorted(t_stack *s1);
-int			min_value(t_stack *s1, t_param *p);
-int			max_value(t_stack *s1, t_param *p);
+int			min_value(t_stack *s1);
+int			max_value(t_stack *s1);
 int			mean_value(t_stack *s1, t_param *p);
-int			nb_elem(t_stack *s);
 int			duplicated(t_stack *s1);
 int			lst_size(t_stack *s);
 int			*bubble_sort(int n, int *tab);
+
+void		extremum_lst(t_stack *s, t_param *p);
+void		bryan(t_param *p, t_stack *s1, t_stack *s2);
 
 void			sort_two(t_stack *s1);
 void			sort_three(t_stack *s1);

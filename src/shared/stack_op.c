@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 18:28:43 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/22 15:40:32 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/26 16:34:53 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	push(t_stack *s1, t_stack *s2, t_param *p) // push s1 on s2
 	s1->next = s2;
 	p->b1 = s1;
 	p->a1 = tmp;
-//	free(s1); // qd je free ca fait boucle infi
-//	free(s2);	
 }	
 
 t_stack *inv_rotate(t_stack *s1)
@@ -51,7 +49,6 @@ t_stack *inv_rotate(t_stack *s1)
 		s1 = s1->next;
 	}
 	return (NULL);
-
 }
 
 t_stack *rotate_list(t_stack *s1)

@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 14:10:47 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/15 14:12:23 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/26 20:18:09 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,44 @@ int	last_val(t_stack *s1)
 	return (s1->val);
 }
 
-int	min_value(t_stack *s1, t_param *p)
+void extremum_lst(t_stack *s, t_param *p)
 {
 	int min;
-	int pos;
+	int max;
 
-	min = s1->val;
-	pos = 0;
-	while (s1 && s1->next)
+	min = s->val;
+	max = s->val;
+	while (s && s->next)
 	{
-		if (min > s1->next->val)
-		{
-			min = s1->next->val;
-			p->sens = pos;
-		}
-		s1 = s1->next;
-		pos++;
+		if (min > s->next->val)
+			min = s->next->val;
+		if (max < s->next->val)
+			max = s->next->val;
+		s = s->next;
 	}
-	if (p->sens > pos / 2)
-		p->sens = 1;
-	else
-		p->sens = 0;
+	p->min = min;
+	p->max = max;
+}
+
+int	min_value(t_stack *s)
+{
+	int min;
+
+	min = s->val;
+	while (s && s->next)
+	{
+		if (min > s->next->val)
+			min = s->next->val;
+		s = s->next;
+	}
 	return (min);
 }
 
-int	max_value(t_stack *s1, t_param *p)
+int	max_value(t_stack *s1)
 {
 	int max;
 
 	max = s1->val;
-	p->sens = p->sens;
 	while (s1 && s1->next)
 	{
 		if (max < s1->next->val)
@@ -67,21 +75,6 @@ int	max_value(t_stack *s1, t_param *p)
 		s1 = s1->next;
 	}
 	return (max);
-}
-
-int			nb_elem(t_stack *s)
-{
-	int i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s)
-	{
-		i++;
-		s = s->next;
-	}
-	return (i);
 }
 
 int	mean_value(t_stack *s1, t_param *p)
