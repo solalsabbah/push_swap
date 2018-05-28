@@ -6,11 +6,31 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 14:26:58 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/26 20:33:03 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/28 16:45:43 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+int		min_cluster(t_stack *s, t_stack *s2, int med)
+{
+	int min;
+
+	min = s->val;
+	while (s && s->med == med)
+	{
+		if (s->val < min)
+			min = s->val;
+		s = s->next;
+	}
+	while (s2 && s2->med == med)
+	{
+		if (s2->val < min)
+			min = s2->val;
+		s2 = s2->next;
+	}
+	return (min);
+}
 
 void 		sort_high_clusters(t_param *p, t_stack *s1, t_stack *s2)
 {
@@ -72,9 +92,9 @@ void 		sort_clusters(t_param *p, t_stack *s1, t_stack *s2)
 }
 
 /*void		sort_biggest_cluster(t_param *p, t_stack *s1, t_stack *s2)
-{
-	split_first_stack(p, s1, s2);
-	s1 = p->a1;
-	s2 = p->b1;
-	sort_high_clusters(p, s1, s2);
-}*/
+  {
+  split_first_stack(p, s1, s2);
+  s1 = p->a1;
+  s2 = p->b1;
+  sort_high_clusters(p, s1, s2);
+  }*/

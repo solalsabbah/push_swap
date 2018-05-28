@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:53:30 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/26 20:17:59 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/28 16:48:06 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,13 @@ int			mean_value(t_stack *s1, t_param *p);
 int			duplicated(t_stack *s1);
 int			lst_size(t_stack *s);
 int			*bubble_sort(int n, int *tab);
+
+int			direction(t_stack *s, t_param *p, int size);
+int		min_cluster(t_stack *s, t_stack *s2, int med);
+void		set_med(t_stack *s, int med);
+
+
+
 
 void		extremum_lst(t_stack *s, t_param *p);
 void		bryan(t_param *p, t_stack *s1, t_stack *s2);

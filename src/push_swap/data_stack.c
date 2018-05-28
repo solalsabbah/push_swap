@@ -6,11 +6,29 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 14:10:47 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/26 20:18:09 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/28 16:47:18 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+int			direction(t_stack *s, t_param *p, int size)
+{
+	int i;
+
+	i = 0;
+	while(s->val && s->val != p->min && s->val != p->max)
+	{
+		i++;
+		s = s->next;
+	}
+	if (i == 0)
+		return (0);
+	if (i > size / 2)
+		return (1);
+	else
+		return (2);
+}
 
 int	is_sorted(t_stack *s1)
 {

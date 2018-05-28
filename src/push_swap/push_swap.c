@@ -6,11 +6,20 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 15:55:00 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/26 21:37:44 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/28 19:00:21 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+void		set_med(t_stack *s, int med)
+{
+	while (s)
+	{
+		s->med = med;
+		s = s->next;
+	}
+}
 
 int	verify(t_stack *s1)
 {
@@ -33,23 +42,43 @@ int	verify(t_stack *s1)
 
 int	call_functions(t_param *p, t_stack *s1, t_stack *s2)
 {
+	int a;
+
+	a = 0;
 	if (verify(s1) == 0)
 	{
 		median_stack(p, s1);
 		split_stack(p, s1, s2);
 		s1 = p->a1;
 		s2 = p->b1;
-		split_second_stack(p, s1, s2);
-		s1 = p->a1;
-		s2 = p->b1;
+		while (!is_sorted(s1))
+		{
+			if (lst_size(s2) > 30)
+			{
+				split_second_stack(p, s1, s2);
+				s1 = p->a1;
+				s2 = p->b1;
+			}
+			bryan(p, s1, s2);
+			s1 = p->a1;
+			s2 = p->b1;
+			if (s2 == NULL)
+			{
+				split_first_stack(p, s1, s2);
+				s1 = p->a1;
+				s2 = p->b1;
+			}
+		}
+		print_stack(p->a1, p->b1);
+		exit (0);
 		bryan(p, s1, s2);
-		s1 = p->a1;
-		s2 = p->b1;
-		print_stack(s1, s2);
-		split_first_stack(p, s1, s2);
-	//	s1 = p->a1;
-	//	s2 = p->b1;
-	//	print_stack(s1, s2);
+//		s1 = p->a1;
+//		s2 = p->b1;
+//		print_stack(s1, s2);
+//		split_first_stack(p, s1, s2);
+		//	s1 = p->a1;
+		//	s2 = p->b1;
+		//	print_stack(s1, s2);
 	} 
 	return (1);
 }
@@ -79,6 +108,6 @@ int	main(int ac, char **av)
 	call_functions(&p, s1, s2);
 	s1 = p.a1;
 	s2 = p.b1;
-//	print_stack(s1, s2);
+	//	print_stack(s1, s2);
 	return (0);
 }
