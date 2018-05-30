@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 19:38:55 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/22 16:32:51 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/30 15:37:23 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	checker(t_stack *s1)
 {
-	int		fd;
+	int			fd;
 	char		*line;
 	t_stack		*s2;
 	t_param		p;
@@ -37,7 +37,7 @@ int	checker(t_stack *s1)
 
 int	main(int ac, char **av)
 {
-	int		i;
+	int			i;
 	t_stack		*s1;
 
 	if (ac == 1)

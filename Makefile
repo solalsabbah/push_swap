@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 15:32:49 by ssabbah           #+#    #+#              #
-#    Updated: 2018/05/22 14:27:26 by ssabbah          ###   ########.fr        #
+#    Updated: 2018/05/30 15:42:29 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,10 @@ PUSHSWAP_SRC = 	push_swap.c\
 				clustering.c\
 				split_stacks.c\
 				data_stack.c\
+				value_data.c\
 				special_cases.c\
 				lst_size.c\
-
+			
 SHARED_OBJ = $(SHARED_SRC:.c=.o)
 CHECKER_OBJ = $(CHECKER_SRC:.c=.o)
 PUSHSWAP_OBJ = $(PUSHSWAP_SRC:.c=.o)

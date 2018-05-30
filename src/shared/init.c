@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/30 15:45:32 by ssabbah           #+#    #+#             */
+/*   Updated: 2018/05/30 15:52:22 by ssabbah          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 int	add_op(int op, t_param *p)
@@ -41,7 +53,7 @@ void	init(t_param *p)
 {
 	p->i = 0;
 	p->nb = 0;
-	p->tab = malloc(sizeof(int) * 2048); // need to make a greated size or i should use a stack ? 
+	p->tab = malloc(sizeof(int) * 2048); // need to make a greated size or i should use a stack ?
 	p->a1 = NULL;
 	p->b1 = NULL;
 	p->sens = 0;
