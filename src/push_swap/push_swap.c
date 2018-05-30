@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 15:55:00 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/30 15:31:52 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/30 18:08:39 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,15 @@ int	call_functions(t_param *p, t_stack *s1, t_stack *s2)
 	if (verify(s1) == 0)
 	{
 		median_stack(p, s1);
-		split_stack(p, s1, s2);
-		s1 = p->a1;
-		s2 = p->b1;
 		while (!is_sorted(s1))
 		{
+			if (a == 0)
+			{
+				split_stack(p, s1, s2);
+				s1 = p->a1;
+				s2 = p->b1;
+				a = 1;
+			}
 			if (lst_size(s2) > 30)
 			{
 				split_second_stack(p, s1, s2);
@@ -75,7 +79,7 @@ int	call_functions(t_param *p, t_stack *s1, t_stack *s2)
 				s2 = p->b1;
 			}
 		}
-	print_stack(p->a1, p->b1);
+			print_stack(s1, s2);
 		exit (0);
 	} 
 	return (1);
@@ -104,8 +108,7 @@ int	main(int ac, char **av)
 	if (duplicated(s1) == 1)
 		return (0);
 	call_functions(&p, s1, s2);
-	s1 = p.a1;
-	s2 = p.b1;
-	//	print_stack(s1, s2);
+	//s1 = p.a1;
+	//s2 = p.b1;
 	return (0);
 }

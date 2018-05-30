@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 19:38:55 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/30 15:37:23 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/30 19:36:02 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ int	checker(t_stack *s1)
 	char		*line;
 	t_stack		*s2;
 	t_param		p;
-
+		
 	init(&p);
 	fd = 0;
-	s2 = malloc(sizeof(t_stack));
-	s2 = NULL; // it segfault without it !
+	s2 = NULL;
 	while (get_next_line(fd, &line) != -1)
 	{
 		if (ft_strcmp(line, "") == 0)
@@ -32,6 +31,7 @@ int	checker(t_stack *s1)
 		free(line); // free necessary ?
 	}
 	apply_op(&p, s1, s2);
+	free(p.tab);
 	return (0);
 }
 
@@ -61,4 +61,5 @@ int	main(int ac, char **av)
 	if (duplicated(s1) == 1)
 		return (0);
 	checker(s1);
+	while(1);
 }

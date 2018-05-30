@@ -6,17 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 14:30:55 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/22 16:31:40 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/30 19:12:12 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-int		position(int a)
-{
-	a = 0;
-	return (0);
-}
 
 int		is_sort(t_stack *s1, t_stack *s2)
 {
@@ -58,8 +52,6 @@ void	verify_condition(int op, t_param *p, t_stack *s1, t_stack *s2)
 		push(s1, s2, p);
 		s1 = p->a1;
 		s2 = p->b1;
-		p->a1 = NULL;
-		p->b1 = NULL;
 	}
 	p->a1 = s1;
 	p->b1 = s2;
@@ -84,7 +76,6 @@ int		apply_op(t_param *p, t_stack *s1, t_stack *s2)
 			p->b1 = NULL;
 		}
 	}
-//	print_stack(s1, s2);
 	is_sort(s1, s2);
 	return (0);
 }
