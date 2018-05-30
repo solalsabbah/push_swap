@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 15:55:00 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/28 19:00:21 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/30 15:31:52 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,21 @@ int	call_functions(t_param *p, t_stack *s1, t_stack *s2)
 			bryan(p, s1, s2);
 			s1 = p->a1;
 			s2 = p->b1;
-			if (s2 == NULL)
+			if (s2 == NULL && !is_sorted(s1))
 			{
 				split_first_stack(p, s1, s2);
 				s1 = p->a1;
 				s2 = p->b1;
 			}
+			if (is_sorted(s1) && s2 != NULL)
+			{
+				split_second_stack(p, s1, s2);
+				s1 = p->a1;
+				s2 = p->b1;
+			}
 		}
-		print_stack(p->a1, p->b1);
+	print_stack(p->a1, p->b1);
 		exit (0);
-		bryan(p, s1, s2);
-//		s1 = p->a1;
-//		s2 = p->b1;
-//		print_stack(s1, s2);
-//		split_first_stack(p, s1, s2);
-		//	s1 = p->a1;
-		//	s2 = p->b1;
-		//	print_stack(s1, s2);
 	} 
 	return (1);
 }

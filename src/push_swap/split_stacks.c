@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 14:23:12 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/28 19:00:19 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/30 15:31:54 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ void		split_second_stack(t_param *p, t_stack *s1, t_stack *s2)
 			s2 = p->a1;
 			s1 = p->b1;
 			s1->med = med;
-			printf("[PA]\n");
+			printf("pa\n");
 			s1->med = s1->val;
 			s1 = rotate_list(s1);
-			printf("[RA]\n");
+			printf("pa\n");
 		}
 		if (s2 && s2->val > med)
 		{
@@ -82,12 +82,12 @@ void		split_second_stack(t_param *p, t_stack *s1, t_stack *s2)
 			s2 = p->a1;
 			s1 = p->b1;
 			s1->med = med;
-			printf("[PA]\n");
-			if (s1 && s1->next  && s1->val > s1->next->val)
-			{
-				swap(s1);
-				printf("[SA]\n");
-			}
+			printf("pa\n");
+	//		if (s1 && s1->next  && s1->val > s1->next->val)
+	//		{
+	//			swap(s1);
+	//			printf("[SA]\n");
+	//		}
 		}
 		else
 		{
