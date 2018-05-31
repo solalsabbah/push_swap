@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 13:24:29 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/30 19:04:49 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/05/31 14:44:24 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_stack	*add_front(t_stack *s1, t_stack *s2)
 t_stack	*add_link(t_stack *s1, int val)
 {
 	t_stack *tmp;
-	
+
 	tmp = malloc(sizeof(t_stack));
 	if (tmp)
 	{
