@@ -21,7 +21,7 @@ t_stack	*add_front(t_stack *s1, t_stack *s2)
 t_stack	*add_link(t_stack *s1, int val)
 {
 	t_stack *tmp;
-
+	
 	tmp = malloc(sizeof(t_stack));
 	if (tmp)
 	{
