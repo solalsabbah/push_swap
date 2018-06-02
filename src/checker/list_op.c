@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 13:24:29 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/31 14:44:24 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/02 16:25:07 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,4 @@ t_stack	*add_link(t_stack *s1, int val)
 		tmp->next = s1;
 	}
 	return (tmp);
-}
-
-void	print_elem(t_stack *s1)
-{
-	printf("elem %d\n", s1->val);
 }

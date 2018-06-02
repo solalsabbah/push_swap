@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:19:37 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/26 17:54:00 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/02 14:41:53 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,24 @@ int			above_median(int med, t_stack *s)
 
 int			median_stack(t_param *p, t_stack *s1)
 {
-	int	n;
-	int	c;
-	int 	*tab;
+	int		n;
+	int		c;
+	int		*tab;
 	void	*adr;
 
-	adr = s1; 
+	adr = s1;
 	n = lst_size(s1);
 	c = 0;
 	tab = malloc(sizeof(int) * (n + 1));
 	while (s1)
-	{	
+	{
 		tab[c] = s1->val;
 		s1 = s1->next;
 		c++;
 	}
-	bubble_sort(n, tab); // modifying directly in the adress 
-	p->nb = (n + 1) / 2; 		// sorting my tab trough point
+	bubble_sort(n, tab);
+	p->nb = (n + 1) / 2;
 	p->med = tab[p->nb - 1];
-	return (tab[p->nb - 1]);		// returnin the median value
+	free(tab);
+	return (p->med);
 }

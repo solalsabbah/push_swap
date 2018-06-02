@@ -6,13 +6,13 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 14:10:47 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/30 15:42:06 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/02 15:08:40 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int		direction(t_stack *s, t_param *p, int size)
+int		direction(t_stack *s, t_param *p)
 {
 	int i;
 
@@ -24,7 +24,7 @@ int		direction(t_stack *s, t_param *p, int size)
 	}
 	if (i == 0)
 		return (0);
-	if (i > size / 2)
+	if (i > lst_size(s) / 2)
 		return (1);
 	else
 		return (2);

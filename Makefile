@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 15:32:49 by ssabbah           #+#    #+#              #
-#    Updated: 2018/05/30 18:16:47 by ssabbah          ###   ########.fr        #
+#    Updated: 2018/06/02 14:59:23 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,9 @@ PUSHSWAP_SRC = 	push_swap.c\
 				bubble_sort.c\
 				clustering.c\
 				split_stacks.c\
+				split_first_stack.c\
+				split_second_stack.c\
+				bryan.c\
 				data_stack.c\
 				value_data.c\
 				special_cases.c\

@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:53:30 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/28 16:48:06 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/02 16:08:57 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int			duplicated(t_stack *s1);
 int			lst_size(t_stack *s);
 int			*bubble_sort(int n, int *tab);
 
-int			direction(t_stack *s, t_param *p, int size);
+int			direction(t_stack *s, t_param *p);
 int		min_cluster(t_stack *s, t_stack *s2, int med);
 void		set_med(t_stack *s, int med);
 

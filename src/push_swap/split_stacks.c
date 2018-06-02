@@ -6,158 +6,32 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 14:23:12 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/30 18:05:00 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/02 16:03:41 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void		bryan(t_param *p, t_stack *s1, t_stack *s2)
-{
-	int size;
-
-	if ((size = lst_size(s2)) <= 30)
-	{
-		while (s2)
-		{
-			extremum_lst(s2, p);
-			if (direction(s2, p, size) == 1)
-			{
-				while (s2->val != p->min && s2->val != p->max)
-				{
-					s2 = inv_rotate(s2); 
-					printf("rrb\n");
-				}
-			}
-			else if (direction(s2, p, size) == 2)
-			{
-				while (s2->val != p->min && s2->val != p->max)
-				{
-					s2 = rotate_list(s2); 
-					printf("rb\n");
-				}
-			}
-			push(s2, s1, p);  // PA
-			s2 = p->a1;
-			s1 = p->b1;
-			printf("pa\n");
-			if (s1->val == p->min)
-			{	
-				s1 = rotate_list(s1);
-				printf("ra\n");
-			}
-		}
-		while (s1->med < p->med)
-		{
-			s1 = rotate_list(s1);
-			printf("ra\n");
-		}	
-	}
-		p->a1 = s1;
-		p->b1 = s2;
-}
-
-
-void		split_second_stack(t_param *p, t_stack *s1, t_stack *s2)
-{
-	int med;
-
-	med = median_stack(p, s2);
-	while (above_median(med, s2) == 1 && !is_sorted(s2))
-	{
-		if (s2->val ==  min_value(s2))
-		{	
-			push(s2, s1, p);  // PA
-			s2 = p->a1;
-			s1 = p->b1;
-			s1->med = med;
-			printf("pa\n");
-			s1->med = s1->val;
-			s1 = rotate_list(s1);
-			printf("ra\n");
-		}
-		if (s2 && s2->val > med)
-		{
-			push(s2, s1, p);  // PA
-			s2 = p->a1;
-			s1 = p->b1;
-			s1->med = med;
-			printf("pa\n");
-		}
-		else
-		{
-			s2 = rotate_list(s2);
-			printf("rb\n");
-		}
-	}
-	p->a1 = s1;
-	p->b1 = s2;
-	if (is_sorted(s1) && s2 != NULL)
-	{
-		push(s2, s1, p);  // PA
-			s2 = p->a1;
-			s1 = p->b1;
-			s1->med = med;
-			printf("pa\n");
-			p->a1 = s1;
-			p->b1 = s2;
-	}
-	if (lst_size(s2) > 30 && !is_sorted(s2))
-		split_second_stack(p, s1, s2);
-}
-
-void		split_first_stack(t_param *p, t_stack *s1, t_stack *s2)
-{
-	int med;
-
-	med = s1->med;
-	while ((s1->med == med) && !is_sorted(s1)) // here condition is wrong
-	{
-		if (s1->val == min_cluster(s1, s2, med))
-		{
-			s1 = rotate_list(s1);
-			printf("ra\n");
-		}
-		else
-		{
-			push(s1, s2, p);  // PB
-			s1 = p->a1;
-			s2 = p->b1;
-			printf("pb\n");
-			s2->med = med;
-			if (s2 && s2->next && s2->val < s2->next->val)
-			{
-				swap(s2);
-				printf("sb\n");
-			}
-		}
-	}
-		 p->a1 = s1;
-		 p->b1 = s2;
-}
-
-void		split_stack(t_param *p, t_stack *s1, t_stack *s2) // (1)
+void		split_stack(t_param *p, t_stack *s1, t_stack *s2)
 {
 	int med;
 
 	med = median_stack(p, s1);
 	p->min_med = med;
-	while (below_median(med, s1)) // adding is sorted  
+	while (below_median(med, s1))
 	{
 		if (s1 && s1->val <= med)
 		{
-			push(s1, s2, p);  // PB
+			push(s1, s2, p);
 			s1 = p->a1;
 			s2 = p->b1;
-			printf("pb\n");
+			ft_putstr("pb\n");
 		}
 		else
 		{
 			s1 = rotate_list(s1);
-			printf("ra\n");
+			ft_putstr("ra\n");
 		}
 	}
 	init_med(s1, s2, med);
-	s1 = p->a1;
-	s2 = p->b1;
 }

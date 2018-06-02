@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 18:28:43 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/30 19:22:30 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/02 14:34:34 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	swap(t_stack *s1)
 	s1->next->val = tmp;
 }
 
-void	push(t_stack *s1, t_stack *s2, t_param *p)
+void	push(t_stack *dest, t_stack *src, t_param *p)
 {
 	void *tmp;
 
-	tmp = s1->next;
-	s1->next = s2;
-	p->b1 = s1;
+	tmp = dest->next;
+	dest->next = src;
+	p->b1 = dest;
 	p->a1 = tmp;
 }
 

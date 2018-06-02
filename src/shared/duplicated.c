@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 14:04:12 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/01 14:05:17 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/02 16:08:13 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	duplicated(t_stack *s1)
 		{
 			if (tmp == s1->val)
 			{
-				printf("doublon\n");
+				ft_putstr("doublon\n");
 				return (1);
 			}
 			s1 = s1->next;

@@ -6,11 +6,37 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 14:30:55 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/30 19:12:12 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/02 17:06:01 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+void	del_stacks(t_stack *s1, t_stack *s2)
+{
+	t_stack *tmp;
+
+	if (s1 != NULL)
+	{
+		while (s1)
+		{
+			tmp = s1;
+			s1 = s1->next;
+			free(tmp);
+		}
+		tmp = NULL;
+	}
+	if (s2 != NULL)
+	{
+		while (s2)
+		{
+			tmp = s2;
+			s2 = s2->next;
+			free(tmp);
+		}
+		tmp = NULL;
+	}
+}
 
 int		is_sort(t_stack *s1, t_stack *s2)
 {
@@ -27,9 +53,9 @@ int		is_sort(t_stack *s1, t_stack *s2)
 		s1 = s1->next;
 	}
 	if (!s2 && p == 0)
-		printf("OK\n");
+		ft_putstr("OK\n");
 	else
-		printf("KO\n");
+		ft_putstr("KO\n");
 	return (0);
 }
 
@@ -77,5 +103,6 @@ int		apply_op(t_param *p, t_stack *s1, t_stack *s2)
 		}
 	}
 	is_sort(s1, s2);
+	del_stacks(s1, s2);
 	return (0);
 }
