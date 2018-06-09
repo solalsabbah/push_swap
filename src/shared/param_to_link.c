@@ -1,37 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_stacks.c                                     :+:      :+:    :+:   */
+/*   param_to_link.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/22 14:23:12 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/06/04 19:26:09 by ssabbah          ###   ########.fr       */
+/*   Created: 2018/06/09 16:04:05 by ssabbah           #+#    #+#             */
+/*   Updated: 2018/06/09 17:40:00 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void		split_stack(t_param *p, t_stack *s1, t_stack *s2)
+void	free_tab(char **tab)
 {
-	int med;
+	int a;
 
-	med = median_stack(p, s1);
-	p->min_med = med;
-	while (below_median(med, s1))
+	a = 0;
+	while (tab[a])
 	{
-		if (s1 && s1->val <= med)
+		free(tab[a]);
+		tab[a] = NULL;
+		a++;
+	}
+	free(tab[a]);
+	tab[a] = NULL;
+	free(tab);
+}
+
+int		param_to_link(t_stack **s1, char *str)
+{
+	char	**tab;
+	int		a;
+
+	tab = ft_split(str);
+	a = 0;
+	while (tab[a])
+	{
+		if (ft_isnumber(tab[a]) == 0 || is_int(tab[a]) == 0)
 		{
-			push(s1, s2, p);
-			s1 = p->a1;
-			s2 = p->b1;
-			ft_putstr("pb\n");
+			free_tab(tab);
+			return (0);
 		}
 		else
-		{
-			s1 = rotate_list(s1);
-			ft_putstr("ra\n");
-		}
+			add_end(s1, ft_atoi(tab[a]));
+		a++;
 	}
-	init_med(s1, s2, med);
+	free_tab(tab);
+	return (1);
 }

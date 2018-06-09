@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/11 17:25:57 by ssabbah           #+#    #+#              #
-#    Updated: 2018/04/27 16:31:27 by ssabbah          ###   ########.fr        #
+#    Updated: 2018/06/04 19:02:32 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ SRC =  is_int.c \
 
 OBJECTS = $(SRC:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 all: $(NAME)
 

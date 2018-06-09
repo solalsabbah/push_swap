@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 11:53:30 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/06/02 16:08:57 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/09 16:04:58 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct	s_param
 	int			min_med;
 	int			max_med;
 	int			sens;
-	int			*tab;
 	void		*a1;
 	void		*b1;
 }				t_param;
@@ -56,13 +55,23 @@ struct s_stack
 };
 
 
-int			checker(t_stack *s1);
+void	swap_new(t_stack **lst);
+void	push_new(t_stack **src, t_stack **dest);
+void	rotate_new(t_stack **s1);
+void	inv_rotate_new(t_stack **s1);
+
+void		add_end(t_stack **s1, int val);
+
+int		param_to_link(t_stack **s1, char *str);
+
+int			checker(t_stack **s1);
 int			apply_op(t_param *p, t_stack *s1, t_stack *s2);
 int			validate_content(char *line, t_param *p);
 int			add_op(int op, t_param *p);
 int			median_stack(t_param *p, t_stack *s1);
 int			last_val(t_stack *s1);
 int			is_sorted(t_stack *s1);
+int			is_sort(t_stack **s1, t_stack **s2);
 int			min_value(t_stack *s1);
 int			max_value(t_stack *s1);
 int			mean_value(t_stack *s1, t_param *p);

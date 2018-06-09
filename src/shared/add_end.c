@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_stacks.c                                     :+:      :+:    :+:   */
+/*   add_end.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/22 14:23:12 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/06/04 19:26:09 by ssabbah          ###   ########.fr       */
+/*   Created: 2018/06/09 15:30:53 by ssabbah           #+#    #+#             */
+/*   Updated: 2018/06/09 17:30:27 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void		split_stack(t_param *p, t_stack *s1, t_stack *s2)
+void	add_end(t_stack **s1, int val)
 {
-	int med;
+	t_stack *tmp;
 
-	med = median_stack(p, s1);
-	p->min_med = med;
-	while (below_median(med, s1))
+	tmp = *s1;
+	if (*s1 == NULL)
 	{
-		if (s1 && s1->val <= med)
-		{
-			push(s1, s2, p);
-			s1 = p->a1;
-			s2 = p->b1;
-			ft_putstr("pb\n");
-		}
-		else
-		{
-			s1 = rotate_list(s1);
-			ft_putstr("ra\n");
-		}
+		(*s1) = malloc(sizeof(t_stack));
+		(*s1)->val = val;
+		(*s1)->next = NULL;
+		tmp = *s1;
 	}
-	init_med(s1, s2, med);
+	else
+	{
+		while ((*s1)->next != NULL)
+			*s1 = (*s1)->next;
+		(*s1)->next = malloc(sizeof(t_stack));
+		(*s1)->next->val = val;
+		(*s1)->next->next = NULL;
+	}
+	*s1 = tmp;
 }

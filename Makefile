@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 15:32:49 by ssabbah           #+#    #+#              #
-#    Updated: 2018/06/02 14:59:23 by ssabbah          ###   ########.fr        #
+#    Updated: 2018/06/09 16:11:39 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,19 +14,22 @@ CHECKER = checker
 PUSHSWAP = push_swap
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 LIBFT= -Llibft -lft
 
 INC_DIR = inc/
 
-SHARED_SRC =	solve.c\
-				list_op.c\
+SHARED_SRC =	add_link.c\
+				add_end.c\
 				print_stacks.c\
+				param_to_link.c\
 				init.c\
 				stack_op.c\
 				duplicated.c\
 
-CHECKER_SRC = checker.c\
+CHECKER_SRC =	checker.c\
+				operations.c\
+				is_sort.c\
 
 PUSHSWAP_SRC = 	push_swap.c\
 				median_stack.c\

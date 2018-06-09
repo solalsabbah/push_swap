@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 15:55:00 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/06/02 17:15:58 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/09 16:54:03 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,20 +97,22 @@ int		main(int ac, char **av)
 	t_param		p;
 	t_stack		*s1;
 	t_stack		*s2;
+	int			i;
 
 	s1 = NULL;
 	s2 = NULL;
+	i = 1;
 	init(&p);
 	if (ac == 1)
 		return (0);
-	while (--ac > 0)
+	while (i < ac)
 	{
-		if (ft_isnumber(av[ac]) == 0 || (is_int(av[ac]) == 0))
+		if (!param_to_link(&s1, av[i]))
 		{
 			ft_putstr("Error\n");
 			return (0);
 		}
-		s1 = add_link(s1, ft_atoi(av[ac]));
+		i++;
 	}
 	if (duplicated(s1) == 1)
 		return (0);

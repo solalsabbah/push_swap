@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_stacks.c                                     :+:      :+:    :+:   */
+/*   del_stacks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/22 14:23:12 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/06/04 19:26:09 by ssabbah          ###   ########.fr       */
+/*   Created: 2018/06/09 13:20:50 by ssabbah           #+#    #+#             */
+/*   Updated: 2018/06/09 14:02:46 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void		split_stack(t_param *p, t_stack *s1, t_stack *s2)
+void	del_stacks(t_stack *s1, t_stack *s2)
 {
-	int med;
+	t_stack *tmp;
 
-	med = median_stack(p, s1);
-	p->min_med = med;
-	while (below_median(med, s1))
+	if (s1 != NULL)
 	{
-		if (s1 && s1->val <= med)
+		while (s1)
 		{
-			push(s1, s2, p);
-			s1 = p->a1;
-			s2 = p->b1;
-			ft_putstr("pb\n");
+			tmp = s1;
+			s1 = s1->next;
+			free(tmp);
 		}
-		else
-		{
-			s1 = rotate_list(s1);
-			ft_putstr("ra\n");
-		}
+		tmp = NULL;
 	}
-	init_med(s1, s2, med);
+	if (s2 != NULL)
+	{
+		while (s2)
+		{
+			tmp = s2;
+			s2 = s2->next;
+			free(tmp);
+		}
+		tmp = NULL;
+	}
 }

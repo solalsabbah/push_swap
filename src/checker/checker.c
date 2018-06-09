@@ -6,35 +6,54 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 19:38:55 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/06/02 17:10:42 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/09 17:39:11 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int		checker(t_stack *s1)
+int		new_fonction(t_stack **s1, t_stack **s2, char *line)
+{
+	if (ft_strcmp(line, "sa") == 0 || ft_strcmp(line, "ss") == 0)
+		swap_new(s1);
+	else if (ft_strcmp(line, "sb") == 0 || ft_strcmp(line, "ss") == 0)
+		swap_new(s2);
+	else if (ft_strcmp(line, "pa") == 0)
+		push_new(s2, s1);
+	else if (ft_strcmp(line, "pb") == 0)
+		push_new(s1, s2);
+	else if (ft_strcmp(line, "ra") == 0 || ft_strcmp(line, "rr") == 0)
+		rotate_new(s1);
+	else if (ft_strcmp(line, "rb") == 0 || ft_strcmp(line, "rr") == 0)
+		rotate_new(s2);
+	else if (ft_strcmp(line, "rra") == 0 || ft_strcmp(line, "rrr") == 0)
+		inv_rotate_new(s1);
+	else if (ft_strcmp(line, "rrb") == 0 || ft_strcmp(line, "rrr") == 0)
+		inv_rotate_new(s2);
+	else
+		return (0);
+	return (1);
+}
+
+int		checker(t_stack **s1)
 {
 	int			fd;
 	char		*line;
 	t_stack		*s2;
-	t_param		p;
 
-	init(&p);
 	fd = 0;
 	s2 = NULL;
-	while (get_next_line(fd, &line) != -1)
+	while (get_next_line(fd, &line))
 	{
-		if (ft_strcmp(line, "") == 0)
+		if (!new_fonction(s1, &s2, line))
 		{
+			printf("error\n");
 			free(line);
-			break ;
+			return (0);
 		}
-		if (validate_content(line, &p) == 0)
-			printf("Wrong operand\n");
 		free(line);
 	}
-	apply_op(&p, s1, s2);
-	free(p.tab);
+	is_sort(s1, &s2);
 	return (0);
 }
 
@@ -47,22 +66,16 @@ int		main(int ac, char **av)
 		return (0);
 	i = 1;
 	s1 = NULL;
-	while (--ac > 0)
+	while (i < ac)
 	{
-		if (ft_isnumber(av[ac]) == 0)
+		if (!param_to_link(&s1, av[i]))
 		{
-			printf("Usage : please only put number\n");
+			ft_putstr("Error\n");
 			return (0);
 		}
-		if (is_int(av[ac]) == 0)
-		{
-			printf("Error\n");
-			return (0);
-		}
-		s1 = add_link(s1, ft_atoi(av[ac]));
+		i++;
 	}
 	if (duplicated(s1) == 1)
 		return (0);
-	checker(s1);
-	while (1);
+	checker(&s1);
 }
