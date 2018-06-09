@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 15:55:00 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/06/09 16:54:03 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/09 18:12:10 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ int		call_functions(t_param *p, t_stack *s1, t_stack *s2)
 	int a;
 
 	a = 0;
+	print_stack(s1, s2);
+	printf("--------------\n");
+	sleep(2);
 	if (verify(s1) == 0)
 	{
 		median_stack(p, s1);
@@ -89,6 +92,7 @@ int		call_functions(t_param *p, t_stack *s1, t_stack *s2)
 			s2 = p->b1;
 		}
 	}
+	print_stack(s1, s2);
 	return (1);
 }
 

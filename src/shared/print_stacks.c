@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 20:00:06 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/06/02 16:54:15 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/09 18:15:31 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 
 void	print_stack(t_stack *s1, t_stack *s2)
 {
-	while (s1 || s2)
+	while (s1)
+	{
+		printf("%d ", s1->val);
+		s1 = s1->next;
+	}
+	printf("\n");
+	while (s2)
+	{
+		printf("%d ", s2->val);
+		s2 = s2->next;
+	}
+/*	while (s1 || s2)
 	{
 		if (!s1)
 			printf("       ||");
@@ -30,5 +41,5 @@ void	print_stack(t_stack *s1, t_stack *s2)
 			printf(" [%4d] %d %p\n", s2->val, s2->med, s2);
 			s2 = s2->next;
 		}
-	}
+	}*/
 }
