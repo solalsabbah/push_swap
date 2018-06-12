@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 19:38:55 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/06/09 17:39:11 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/12 13:15:27 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,19 @@ int		new_fonction(t_stack **s1, t_stack **s2, char *line)
 
 int		checker(t_stack **s1)
 {
-	int			fd;
 	char		*line;
 	t_stack		*s2;
 
-	fd = 0;
 	s2 = NULL;
-	while (get_next_line(fd, &line))
+	while (get_next_line(0, &line) > 0)
 	{
 		if (!new_fonction(s1, &s2, line))
 		{
-			printf("error\n");
+			ft_putstr("Error\n");
 			free(line);
 			return (0);
 		}
+		line = NULL;
 		free(line);
 	}
 	is_sort(s1, &s2);
@@ -59,12 +58,12 @@ int		checker(t_stack **s1)
 
 int		main(int ac, char **av)
 {
-	int			i;
 	t_stack		*s1;
+	int 		i;
 
+	i = 1;
 	if (ac == 1)
 		return (0);
-	i = 1;
 	s1 = NULL;
 	while (i < ac)
 	{

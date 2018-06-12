@@ -1,13 +1,26 @@
-nalyser.sh                                        :+:      :+:    :+:    #
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    analyser.sh                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: aroulin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/26 18:08:32 by aroulin           #+#    #+#              #
-#    Updated: 2017/07/26 18:28:17 by aroulin          ###   ########.fr        #
+#    Updated: 2018/06/12 12:11:24 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/bash
+
+##
+##		Need to have ./checker and ./push_swap
+##
+##		first request is the range of number with the smallest and biggest
+##
+##		second request is total loops that the program will perfom
+##
+##		third request is for know how many loops are above and below
+
 
 ##
 ##		Need to have ./checker and ./push_swap
@@ -56,23 +69,23 @@ do
 	fi;
 
 	if [ $MAX -lt $NBRCOUP ]
-	then 
-		MAX=$NBRCOUP; 
-		ACTMAX=$ARG; 
+	then
+		MAX=$NBRCOUP;
+		ACTMAX=$ARG;
 	fi;
 	if [ $MIN -eq "-1" ];
-	then 
-		MIN=$NBRCOUP; 
-		ACTMIN=$ARG; 
+	then
+		MIN=$NBRCOUP;
+		ACTMIN=$ARG;
 	fi;
 	if [ $NBRCOUP -lt $MIN ]
-	then MIN=$NBRCOUP; 
-		ACTMIN=$ARG; 
+	then MIN=$NBRCOUP;
+		ACTMIN=$ARG;
 	fi;
 	MOY=$(( $MOY + $NBRCOUP ));
 	IND=$(( $IND - 1 ));
 	if [ $NBRCOUP -gt $MED ]
-	then 
+	then
 		((MORE++))
 	else
 		((LESS++))

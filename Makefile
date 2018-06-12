@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 15:32:49 by ssabbah           #+#    #+#              #
-#    Updated: 2018/06/09 16:11:39 by ssabbah          ###   ########.fr        #
+#    Updated: 2018/06/12 13:12:32 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ INC_DIR = inc/
 
 SHARED_SRC =	add_link.c\
 				add_end.c\
-				print_stacks.c\
 				param_to_link.c\
 				init.c\
 				stack_op.c\

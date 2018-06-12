@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 17:26:26 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/05/31 13:39:07 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/12 12:19:05 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,83 +15,69 @@
 #include <fcntl.h>
 #include "libft.h"
 
-int		from_buff(char ***line, char **str, ssize_t ret)
+static unsigned int	ft_strclen(char *save)
 {
-	char	*tmp;
+	unsigned int	i;
 
-	if (ft_strchr(*str, '\n'))
-	{
-		**line = ft_strsub(*str, 0, (ft_strlen(*str) -
-					ft_strlen(ft_strchr(*str, '\n'))));
-		tmp = ft_strdup(ft_strchr(*str, '\n') + 1);
-		ft_strdel(str);
-		if (ft_strlen(tmp) > 0)
-			*str = ft_strdup(tmp);
-		ft_strdel(&tmp);
-		return (1);
-	}
-	else if (ret < BUFF_SIZE)
-	{
-		**line = ft_strsub(*str, 0, ft_strlen(*str));
-		ft_strdel(str);
-		return (1);
-	}
-	return (0);
+	i = 0;
+	while (save[i] != '\n' && save[i] != '\0')
+		i++;
+	return (i);
 }
 
-int		from_remainder(char ***line, char **str)
+static char			*ft_strrejoin(char *s1, char *s2, size_t len)
 {
-	char	*tmp;
+	char		*str;
+	int			nb;
+	char		*tmp;
 
-	if (*str)
-	{
-		if (ft_strchr(*str, '\n'))
-		{
-			**line = ft_strsub(*str, 0, (ft_strlen(*str) -
-						ft_strlen(ft_strchr(*str, '\n'))));
-			tmp = ft_strdup(ft_strchr(*str, '\n') + 1);
-			ft_strdel(str);
-			if (ft_strlen(tmp) > 0)
-				*str = ft_strdup(tmp);
-			ft_strdel(&tmp);
-			return (1);
-		}
-	}
-	return (0);
+	nb = ft_strlen(s1) + ++len;
+	str = ft_strnew(nb);
+	tmp = str;
+	while (*s1)
+		*str++ = *s1++;
+	while (*s2 && --len > 0)
+		*str++ = *s2++;
+	*str = '\0';
+	return (str - (str - tmp));
 }
 
-char	*put_in_str(char **str, char *buff, ssize_t ret)
+static char			*ft_chrandcpy(char *save)
 {
-	char	*tmp;
-	char	*tmp_buff;
-
-	tmp_buff = ft_strsub(buff, 0, ret);
-	if (*str)
+	if (ft_strchr(save, '\n'))
 	{
-		tmp = ft_strjoin(*str, tmp_buff);
-		ft_strdel(str);
+		ft_strcpy(save, ft_strchr(save, '\n') + 1);
+		return (save);
 	}
-	else
-		tmp = ft_strdup(tmp_buff);
-	ft_strdel(&tmp_buff);
-	return (tmp);
+	if (ft_strclen(save) > 0)
+	{
+		ft_strcpy(save, ft_strchr(save, '\0'));
+		return (save);
+	}
+	return (NULL);
 }
 
-int		get_next_line(const int fd, char **line)
+int					get_next_line(int const fd, char **line)
 {
-	static char	*str;
-	ssize_t		ret;
 	char		buff[BUFF_SIZE + 1];
+	static char	*save[256];
+	int			res;
+	char		*ptr;
 
-	ret = 0;
-	if (from_remainder(&line, &str) == 1)
-		return (1);
-	if ((ret = read(fd, buff, BUFF_SIZE)) == -1)
+	if (fd < 0 || BUFF_SIZE < 1 || !line || read(fd, buff, 0) < 0)
 		return (-1);
-	if (ret == 0 && !str)
+	if (!(save[fd]) && (save[fd] = ft_strnew(0)) == NULL)
+		return (-1);
+	while (!(ft_strchr(save[fd], '\n')) &&
+			(res = read(fd, buff, BUFF_SIZE)) > 0)
+	{
+		buff[res] = '\0';
+		ptr = save[fd];
+		save[fd] = ft_strrejoin(ptr, buff, res);
+		free(ptr);
+	}
+	*line = ft_strsub(save[fd], 0, ft_strclen(save[fd]));
+	if (ft_chrandcpy(save[fd]) == NULL)
 		return (0);
-	str = put_in_str(&str, buff, ret);
-	if (from_buff(&line, &str, ret) == 0)
-		get_next_line(fd, line);
 	return (1);
 }
