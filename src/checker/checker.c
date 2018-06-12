@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 19:38:55 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/06/12 13:15:27 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/06/12 13:24:37 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int		checker(t_stack **s1)
 
 int		main(int ac, char **av)
 {
-	t_stack		*s1;
-	int 		i;
+	t_stack	*s1;
+	int		i;
 
 	i = 1;
 	if (ac == 1)
